@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgenTek Labs — AI Demo</title>
+<style>
+  :root {
+    --bg: #0A0A0F;
+    --surface: #111118;
+    --surface2: #1A1A24;
+    --border: #2A2A3A;
+    --text: #E8E8F0;
+    --muted: #8888A0;
+    --accent: #3B82F6;
+    --accent2: #06B6D4;
+    --green: #22C55E;
+    --amber: #F59E0B;
+    --red: #EF4444;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  /* Background glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }
+  .header-badge {
+    font-size: 12px;
+    color: var(--accent);
+    background: rgba(59,130,246,0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(59,130,246,0.2);
+  }
+
+  /* Hero */
+  .hero { text-align: center; margin-bottom: 48px; }
+  .hero-label {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent2);
+    background: rgba(6,182,212,0.1);
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(6,182,212,0.15);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Demo panel */
+  .demo-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .demo-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .demo-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .demo-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .demo-body { padding: 32px; }
+
+  /* Upload area */
+  .upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 24px;
+  }
+  .upload-zone:hover, .upload-zone.dragover {
+    border-color: var(--accent);
+    background: rgba(59,130,246,0.04);
+  }
+  .upload-zone.has-file {
+    border-color: var(--green);
+    border-style: solid;
+    background: rgba(34,197,94,0.04);
+  }
+  .upload-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+  .upload-zone h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .upload-zone p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .file-name {
+    color: var(--green);
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* Sample docs */
+  .sample-docs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  .sample-doc {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sample-doc:hover {
+    border-color: var(--accent);
+    background: rgba(59,130,246,0.06);
+  }
+  .sample-doc.selected {
+    border-color: var(--green);
+    background: rgba(34,197,94,0.06);
+  }
+
+  /* Process button */
+  .process-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font);
+  }
+  .process-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .process-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* Processing animation */
+  .processing { margin-top: 28px; }
+  .processing-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .step-list { display: flex; flex-direction: column; gap: 4px; }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    transition: all 0.4s;
+  }
+  .step.active {
+    background: rgba(59,130,246,0.06);
+    color: var(--text);
+  }
+  .step.done {
+    color: var(--green);
+  }
+  .step-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .step.active .step-icon {
+    border-color: var(--accent);
+    background: rgba(59,130,246,0.15);
+  }
+  .step.done .step-icon {
+    border-color: var(--green);
+    background: rgba(34,197,94,0.15);
+  }
+  .step-time {
+    margin-left: auto;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Results */
+  .results { margin-top: 28px; animation: fadeUp 0.5s ease; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .results-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .results-badge {
+    background: rgba(34,197,94,0.1);
+    color: var(--green);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .result-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .result-card-header {
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-card-body { padding: 16px; }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-label { color: var(--muted); }
+  .result-value { font-weight: 500; text-align: right; max-width: 55%; }
+  .result-value.green { color: var(--green); }
+  .result-value.amber { color: var(--amber); }
+  .result-value.red { color: var(--red); }
+
+  .confidence-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .confidence-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .confidence-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+
+  .flags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .flag {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  .flag.green { background: rgba(34,197,94,0.1); color: var(--green); }
+  .flag.amber { background: rgba(245,158,11,0.1); color: var(--amber); }
+  .flag.red { background: rgba(239,68,68,0.1); color: var(--red); }
+
+  /* Audit trail */
+  .audit-trail { margin-top: 16px; }
+  .audit-entry {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .audit-entry:last-child { border-bottom: none; }
+  .audit-time {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    width: 60px;
+  }
+  .audit-action { flex: 1; }
+  .audit-status {
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    padding: 48px 0 64px;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+  .cta-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .cta-section p {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-family: var(--font);
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .powered-by {
+    text-align: center;
+    padding: 24px 0;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* Hidden */
+  .hidden { display: none !important; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 26px; }
+    .stats-bar { grid-template-columns: 1fr; }
+    .sample-docs { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-mark">A</div>
+      AgenTek Labs
+    </div>
+    <span class="header-badge" id="useCaseBadge">Interactive Demo</span>
+  </header>
+
+  <section class="hero">
+    <div class="hero-label" id="heroLabel">Document Processing</div>
+    <h1 id="heroTitle">See How AI Handles <span class="grad" id="heroGrad">Your Documents</span></h1>
+    <p id="heroSubtitle">Upload a sample document and watch our AI agent extract, validate, and structure the data in seconds — with a full audit trail.</p>
+  </section>
+
+  <div class="demo-panel">
+    <div class="demo-toolbar">
+      <div class="demo-dots"><span></span><span></span><span></span></div>
+      <span id="toolbarLabel">AgenTek Document Agent v2.1</span>
+    </div>
+    <div class="demo-body">
+
+      <!-- Upload area -->
+      <div id="uploadSection">
+        <div class="upload-zone" id="uploadZone">
+          <div class="upload-icon" id="uploadIcon">📄</div>
+          <h3 id="uploadTitle">Drop a document here</h3>
+          <p id="uploadSubtitle">or click to select a file (PDF, DOCX, image)</p>
+          <div class="file-name hidden" id="fileName"></div>
+        </div>
+
+        <p style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:14px;">Or try one of our sample documents:</p>
+
+        <div class="sample-docs" id="sampleDocs"></div>
+
+        <button class="process-btn" id="processBtn" disabled>
+          Process with AI Agent
+        </button>
+      </div>
+
+      <!-- Processing steps -->
+      <div class="processing hidden" id="processingSection">
+        <div class="processing-header">
+          <div class="spinner" id="processingSpinner"></div>
+          <span id="processingLabel">Processing document...</span>
+        </div>
+        <div class="step-list" id="stepList"></div>
+      </div>
+
+      <!-- Results -->
+      <div class="results hidden" id="resultsSection"></div>
+
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar hidden" id="statsBar">
+    <div class="stat-card">
+      <div class="stat-value" style="color:var(--green)" id="statTime">4.2s</div>
+      <div class="stat-label">Processing Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="color:var(--accent)" id="statFields">18</div>
+      <div class="stat-label">Fields Extracted</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="color:var(--accent2)" id="statConfidence">97.3%</div>
+      <div class="stat-label">Confidence Score</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>See What This Looks Like for Your Business</h2>
+    <p>We'll build a proof-of-concept using your actual documents and workflows — free, no commitment.</p>
+    <a href="mailto:chandra@agentek.co.uk?subject=Demo%20Follow-Up%20%E2%80%94%20AgenTek%20Labs&body=Hi%20Chandra%2C%0A%0AI%20tried%20the%20demo%20and%20I%E2%80%99d%20like%20to%20discuss%20how%20this%20could%20work%20for%20us.%0A%0ABest" class="cta-btn">Book a 20-Minute Call</a>
+  </section>
+
+  <div class="powered-by">AgenTek Labs Limited — Real-Life AI for Real-Life Problems</div>
+</div>
+
+<script>
+// ─── USE CASE CONFIGURATIONS ───────────────────────────────────
+
+const USE_CASES = {
+  'document-processing': {
+    badge: 'Document Intelligence',
+    label: 'Document Processing',
+    heroTitle: 'See How AI Handles ',
+    heroGrad: 'Your Documents',
+    subtitle: 'Upload a sample document and watch our AI agent extract, validate, and structure the data in seconds — with a full audit trail.',
+    toolbarLabel: 'AgenTek Document Agent v2.1',
+    uploadIcon: '📄',
+    uploadTitle: 'Drop a document here',
+    uploadSubtitle: 'or click to select a file (PDF, DOCX, image)',
+    samples: [
+      { name: 'Sample Invoice (PDF)', icon: '🧾', id: 'invoice' },
+      { name: 'Employment Contract', icon: '📋', id: 'contract' },
+      { name: 'Insurance Claim Form', icon: '🛡', id: 'claim' },
+    ],
+    steps: [
+      'Classifying document type...',
+      'Extracting text via OCR engine...',
+      'Identifying key fields and entities...',
+      'Cross-referencing extracted data...',
+      'Validating against business rules...',
+      'Generating structured output...',
+      'Building audit trail...',
+    ],
+    getResults: (sampleId) => {
+      if (sampleId === 'contract') return contractResults();
+      if (sampleId === 'claim') return claimDocResults();
+      return invoiceResults();
+    },
+    stats: { time: '3.8s', fields: '22', confidence: '97.6%' },
+  },
+
+  'onboarding': {
+    badge: 'Process Automation',
+    label: 'Client Onboarding',
+    heroTitle: 'See How AI Streamlines ',
+    heroGrad: 'Client Onboarding',
+    subtitle: 'Submit a sample application and watch our AI agent verify identity, check compliance, and complete onboarding in seconds.',
+    toolbarLabel: 'AgenTek Onboarding Agent v1.4',
+    uploadIcon: '👤',
+    uploadTitle: 'Drop an application here',
+    uploadSubtitle: 'or click to select a file (PDF, DOCX, image)',
+    samples: [
+      { name: 'New Client Application', icon: '📝', id: 'application' },
+      { name: 'KYC Document Pack', icon: '🪪', id: 'kyc' },
+      { name: 'Employee Onboarding Form', icon: '🏢', id: 'employee' },
+    ],
+    steps: [
+      'Receiving application data...',
+      'Extracting identity documents...',
+      'Running KYC / AML checks...',
+      'Verifying against sanctions lists...',
+      'Scoring risk profile...',
+      'Generating onboarding pack...',
+      'Routing for approval...',
+    ],
+    getResults: (sampleId) => {
+      if (sampleId === 'kyc') return kycResults();
+      if (sampleId === 'employee') return employeeResults();
+      return applicationResults();
+    },
+    stats: { time: '5.1s', fields: '31', confidence: '96.8%' },
+  },
+
+  'claims-triage': {
+    badge: 'Intelligent Triage',
+    label: 'Claims & Triage',
+    heroTitle: 'See How AI Triages ',
+    heroGrad: 'Claims Automatically',
+    subtitle: 'Submit a sample claim and watch our AI agent classify, assess severity, detect anomalies, and route it — all in seconds.',
+    toolbarLabel: 'AgenTek Triage Agent v2.0',
+    uploadIcon: '🛡',
+    uploadTitle: 'Drop a claim here',
+    uploadSubtitle: 'or click to select a file (PDF, DOCX, image)',
+    samples: [
+      { name: 'Motor Insurance Claim', icon: '🚗', id: 'motor' },
+      { name: 'Patient Referral', icon: '🏥', id: 'referral' },
+      { name: 'IT Support Ticket', icon: '🎫', id: 'ticket' },
+    ],
+    steps: [
+      'Ingesting claim data...',
+      'Classifying claim type and category...',
+      'Assessing severity and urgency...',
+      'Running fraud/anomaly detection...',
+      'Checking policy coverage...',
+      'Determining routing and priority...',
+      'Generating triage summary...',
+    ],
+    getResults: (sampleId) => {
+      if (sampleId === 'referral') return referralResults();
+      if (sampleId === 'ticket') return ticketResults();
+      return motorClaimResults();
+    },
+    stats: { time: '2.9s', fields: '16', confidence: '98.1%' },
+  },
+
+  'compliance': {
+    badge: 'Regulatory AI',
+    label: 'Compliance Screening',
+    heroTitle: 'See How AI Screens ',
+    heroGrad: 'Compliance Risks',
+    subtitle: 'Upload a document and watch our AI agent check regulatory requirements, flag risks, and generate a compliance report.',
+    toolbarLabel: 'AgenTek Compliance Agent v1.7',
+    uploadIcon: '⚖️',
+    uploadTitle: 'Drop a document to screen',
+    uploadSubtitle: 'or click to select a file (PDF, DOCX, image)',
+    samples: [
+      { name: 'Financial Promotion', icon: '📢', id: 'promotion' },
+      { name: 'Client Correspondence', icon: '✉️', id: 'correspondence' },
+      { name: 'Policy Document', icon: '📜', id: 'policy' },
+    ],
+    steps: [
+      'Ingesting document content...',
+      'Identifying regulatory scope...',
+      'Scanning for mandatory disclosures...',
+      'Checking prohibited language...',
+      'Cross-referencing FCA/PRA rules...',
+      'Assessing risk level...',
+      'Generating compliance report...',
+    ],
+    getResults: (sampleId) => {
+      if (sampleId === 'correspondence') return correspondenceResults();
+      if (sampleId === 'policy') return policyResults();
+      return promotionResults();
+    },
+    stats: { time: '4.5s', fields: '24', confidence: '95.9%' },
+  }
+};
+
+
+// ─── RESULT GENERATORS ─────────────────────────────────────────
+
+function invoiceResults() {
+  return `
+    <div class="results-header">Extracted Data <span class="results-badge">22 fields</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Invoice Details</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Invoice Number</span><span class="result-value">INV-2026-04871</span></div>
+        <div class="result-row"><span class="result-label">Vendor</span><span class="result-value">Apex Solutions Ltd</span></div>
+        <div class="result-row"><span class="result-label">Date Issued</span><span class="result-value">08 Apr 2026</span></div>
+        <div class="result-row"><span class="result-label">Due Date</span><span class="result-value">08 May 2026</span></div>
+        <div class="result-row"><span class="result-label">Net Amount</span><span class="result-value">£14,250.00</span></div>
+        <div class="result-row"><span class="result-label">VAT (20%)</span><span class="result-value">£2,850.00</span></div>
+        <div class="result-row"><span class="result-label">Total Due</span><span class="result-value" style="font-size:16px;font-weight:700">£17,100.00</span></div>
+        <div class="result-row"><span class="result-label">PO Match</span><span class="result-value green">PO-2026-3291 ✓</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Validation Checks</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ VAT calculation correct</span>
+          <span class="flag green">✓ PO number matched</span>
+          <span class="flag green">✓ Vendor registered</span>
+          <span class="flag green">✓ Within budget</span>
+          <span class="flag amber">⚠ Payment terms differ from master</span>
+        </div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Audit Trail</div>
+      <div class="result-card-body">
+        <div class="audit-trail">
+          <div class="audit-entry"><span class="audit-time">0.00s</span><span class="audit-action">Document received — classified as Invoice</span><span class="audit-status" style="color:var(--green)">✓</span></div>
+          <div class="audit-entry"><span class="audit-time">0.41s</span><span class="audit-action">OCR extraction complete — 22 fields identified</span><span class="audit-status" style="color:var(--green)">✓</span></div>
+          <div class="audit-entry"><span class="audit-time">1.12s</span><span class="audit-action">PO cross-reference — matched PO-2026-3291</span><span class="audit-status" style="color:var(--green)">✓</span></div>
+          <div class="audit-entry"><span class="audit-time">1.89s</span><span class="audit-action">VAT validation — calculation verified correct</span><span class="audit-status" style="color:var(--green)">✓</span></div>
+          <div class="audit-entry"><span class="audit-time">2.44s</span><span class="audit-action">Payment terms check — 30 days vs. master 14 days</span><span class="audit-status" style="color:var(--amber)">⚠</span></div>
+          <div class="audit-entry"><span class="audit-time">3.01s</span><span class="audit-action">Routed to AP team — flagged for terms review</span><span class="audit-status" style="color:var(--green)">✓</span></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function contractResults() {
+  return `
+    <div class="results-header">Extracted Data <span class="results-badge">28 fields</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Contract Summary</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Contract Type</span><span class="result-value">Fixed-Term Employment</span></div>
+        <div class="result-row"><span class="result-label">Employee</span><span class="result-value">Sarah M. Chen</span></div>
+        <div class="result-row"><span class="result-label">Role</span><span class="result-value">Senior Data Engineer</span></div>
+        <div class="result-row"><span class="result-label">Start Date</span><span class="result-value">01 May 2026</span></div>
+        <div class="result-row"><span class="result-label">Duration</span><span class="result-value">12 months</span></div>
+        <div class="result-row"><span class="result-label">Salary</span><span class="result-value">£85,000 p.a.</span></div>
+        <div class="result-row"><span class="result-label">Notice Period</span><span class="result-value">3 months</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Clause Analysis</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ Non-compete: 6 months, UK only</span>
+          <span class="flag green">✓ IP assignment clause present</span>
+          <span class="flag green">✓ GDPR data handling clause present</span>
+          <span class="flag amber">⚠ Restrictive covenant may be unenforceable</span>
+          <span class="flag red">✗ Missing: Right to work verification ref</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function claimDocResults() {
+  return `
+    <div class="results-header">Extracted Data <span class="results-badge">19 fields</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Claim Details</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Claim Reference</span><span class="result-value">CLM-2026-88421</span></div>
+        <div class="result-row"><span class="result-label">Policy Number</span><span class="result-value">HH-4419827</span></div>
+        <div class="result-row"><span class="result-label">Claimant</span><span class="result-value">James R. Whitfield</span></div>
+        <div class="result-row"><span class="result-label">Type</span><span class="result-value">Home — Water Damage</span></div>
+        <div class="result-row"><span class="result-label">Date of Incident</span><span class="result-value">02 Apr 2026</span></div>
+        <div class="result-row"><span class="result-label">Estimated Value</span><span class="result-value">£8,340.00</span></div>
+        <div class="result-row"><span class="result-label">Excess</span><span class="result-value">£250.00</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Validation</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ Policy active at date of loss</span>
+          <span class="flag green">✓ Water damage covered under policy</span>
+          <span class="flag green">✓ Claim within coverage limit</span>
+          <span class="flag amber">⚠ No photos attached — request needed</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function applicationResults() {
+  return `
+    <div class="results-header">Onboarding Report <span class="results-badge">Complete</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Applicant Profile</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Name</span><span class="result-value">Richard A. Thompson</span></div>
+        <div class="result-row"><span class="result-label">Application Type</span><span class="result-value">Wealth Management — New Client</span></div>
+        <div class="result-row"><span class="result-label">Risk Category</span><span class="result-value green">Standard</span></div>
+        <div class="result-row"><span class="result-label">ID Verified</span><span class="result-value green">Passport — verified ✓</span></div>
+        <div class="result-row"><span class="result-label">Address Verified</span><span class="result-value green">Utility bill — matched ✓</span></div>
+        <div class="result-row"><span class="result-label">PEP Check</span><span class="result-value green">Clear ✓</span></div>
+        <div class="result-row"><span class="result-label">Sanctions Check</span><span class="result-value green">Clear ✓</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Recommended Action</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ Auto-approved for onboarding</span>
+          <span class="flag green">✓ Welcome pack generated</span>
+          <span class="flag green">✓ Advisor assigned: M. Patterson</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function kycResults() {
+  return `
+    <div class="results-header">KYC Verification <span class="results-badge">7 checks complete</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Identity Verification</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Document Type</span><span class="result-value">UK Driving Licence</span></div>
+        <div class="result-row"><span class="result-label">Name Match</span><span class="result-value green">Exact match ✓</span></div>
+        <div class="result-row"><span class="result-label">DOB Match</span><span class="result-value green">Verified ✓</span></div>
+        <div class="result-row"><span class="result-label">Address Match</span><span class="result-value green">Verified ✓</span></div>
+        <div class="result-row"><span class="result-label">Document Expiry</span><span class="result-value green">Valid until 2031</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Compliance Screening</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Sanctions List</span><span class="result-value green">Clear ✓</span></div>
+        <div class="result-row"><span class="result-label">PEP Database</span><span class="result-value green">Clear ✓</span></div>
+        <div class="result-row"><span class="result-label">Adverse Media</span><span class="result-value green">Clear ✓</span></div>
+        <div class="result-row"><span class="result-label">Risk Score</span><span class="result-value green">Low (12/100)</span></div>
+      </div>
+    </div>`;
+}
+
+function employeeResults() {
+  return `
+    <div class="results-header">Employee Onboarding <span class="results-badge">Auto-processed</span></div>
+    <div class="result-card">
+      <div class="result-card-header">New Starter Details</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Name</span><span class="result-value">Priya Kaur</span></div>
+        <div class="result-row"><span class="result-label">Department</span><span class="result-value">Engineering</span></div>
+        <div class="result-row"><span class="result-label">Start Date</span><span class="result-value">21 Apr 2026</span></div>
+        <div class="result-row"><span class="result-label">Right to Work</span><span class="result-value green">UK Citizen — verified ✓</span></div>
+        <div class="result-row"><span class="result-label">DBS Check</span><span class="result-value green">Clear ✓</span></div>
+        <div class="result-row"><span class="result-label">References</span><span class="result-value amber">1 of 2 received</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Auto-Provisioned</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ Email account created</span>
+          <span class="flag green">✓ Laptop ordered</span>
+          <span class="flag green">✓ Building access requested</span>
+          <span class="flag amber">⚠ Pending: 2nd reference chase</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function motorClaimResults() {
+  return `
+    <div class="results-header">Triage Result <span class="results-badge">Auto-classified</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Claim Assessment</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Claim ID</span><span class="result-value">MC-2026-55103</span></div>
+        <div class="result-row"><span class="result-label">Category</span><span class="result-value">Motor — Rear-end collision</span></div>
+        <div class="result-row"><span class="result-label">Severity</span><span class="result-value amber">Medium</span></div>
+        <div class="result-row"><span class="result-label">Estimated Cost</span><span class="result-value">£3,200 — £4,800</span></div>
+        <div class="result-row"><span class="result-label">Fraud Score</span><span class="result-value green">Low risk (8/100)</span></div>
+        <div class="result-row"><span class="result-label">Liability</span><span class="result-value green">Third party — clear</span></div>
+        <div class="result-row"><span class="result-label">Routed To</span><span class="result-value">Standard Claims — Team B</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Triage Flags</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ Policy active</span>
+          <span class="flag green">✓ No prior claims in 3 years</span>
+          <span class="flag green">✓ Photos attached and verified</span>
+          <span class="flag green">✓ Auto-approved for repair network</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function referralResults() {
+  return `
+    <div class="results-header">Referral Triage <span class="results-badge">Prioritised</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Patient Referral</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Referral ID</span><span class="result-value">REF-2026-7841</span></div>
+        <div class="result-row"><span class="result-label">Specialty</span><span class="result-value">Cardiology</span></div>
+        <div class="result-row"><span class="result-label">Urgency</span><span class="result-value red">Urgent — 2-week pathway</span></div>
+        <div class="result-row"><span class="result-label">GP Practice</span><span class="result-value">Elm Street Surgery</span></div>
+        <div class="result-row"><span class="result-label">Key Findings</span><span class="result-value">Chest pain, abnormal ECG</span></div>
+        <div class="result-row"><span class="result-label">Routed To</span><span class="result-value">Dr. K. Patel — Cardiology</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Compliance</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ NHS e-Referral compatible</span>
+          <span class="flag green">✓ Clinical data complete</span>
+          <span class="flag red">✗ Missing: latest blood panel</span>
+          <span class="flag amber">⚠ Auto-chased GP for bloods</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function ticketResults() {
+  return `
+    <div class="results-header">Ticket Triage <span class="results-badge">Auto-routed</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Support Ticket</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Ticket ID</span><span class="result-value">INC-44829</span></div>
+        <div class="result-row"><span class="result-label">Category</span><span class="result-value">Infrastructure — VPN</span></div>
+        <div class="result-row"><span class="result-label">Priority</span><span class="result-value amber">P2 — High</span></div>
+        <div class="result-row"><span class="result-label">Affected Users</span><span class="result-value">~120 (London office)</span></div>
+        <div class="result-row"><span class="result-label">Similar Incidents</span><span class="result-value">INC-41003 (Dec 2025)</span></div>
+        <div class="result-row"><span class="result-label">Routed To</span><span class="result-value">Network Ops — L2</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">AI Recommendations</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ Known resolution from INC-41003 attached</span>
+          <span class="flag green">✓ Runbook auto-linked</span>
+          <span class="flag amber">⚠ Escalation timer: 30 min</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function promotionResults() {
+  return `
+    <div class="results-header">Compliance Report <span class="results-badge">3 issues found</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Regulatory Scan</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Document Type</span><span class="result-value">Financial Promotion</span></div>
+        <div class="result-row"><span class="result-label">Applicable Rules</span><span class="result-value">FCA COBS 4.2, 4.5, 4.7</span></div>
+        <div class="result-row"><span class="result-label">Risk Rating</span><span class="result-value amber">Medium — manual review advised</span></div>
+        <div class="result-row"><span class="result-label">Auto-Clearable</span><span class="result-value red">No — issues require human sign-off</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Issues Flagged</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag red">✗ Missing: capital at risk warning</span>
+          <span class="flag red">✗ "Guaranteed returns" — prohibited language</span>
+          <span class="flag amber">⚠ Past performance without required disclaimer</span>
+          <span class="flag green">✓ Fair, clear, and not misleading (general tone)</span>
+          <span class="flag green">✓ Target market identified</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function correspondenceResults() {
+  return `
+    <div class="results-header">Correspondence Scan <span class="results-badge">1 issue</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Communication Check</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Type</span><span class="result-value">Client Email — Investment Advice</span></div>
+        <div class="result-row"><span class="result-label">Sender</span><span class="result-value">Advisor (internal)</span></div>
+        <div class="result-row"><span class="result-label">Recipient</span><span class="result-value">Retail client</span></div>
+        <div class="result-row"><span class="result-label">Risk Rating</span><span class="result-value green">Low</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Flags</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag green">✓ Suitability statement present</span>
+          <span class="flag green">✓ No prohibited language</span>
+          <span class="flag green">✓ Risk warnings included</span>
+          <span class="flag amber">⚠ Recommendation without documented rationale — add file note</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function policyResults() {
+  return `
+    <div class="results-header">Policy Review <span class="results-badge">2 updates needed</span></div>
+    <div class="result-card">
+      <div class="result-card-header">Document Analysis</div>
+      <div class="result-card-body">
+        <div class="result-row"><span class="result-label">Document</span><span class="result-value">AML Policy v4.2</span></div>
+        <div class="result-row"><span class="result-label">Last Reviewed</span><span class="result-value amber">14 months ago</span></div>
+        <div class="result-row"><span class="result-label">Regulatory Alignment</span><span class="result-value amber">Partially aligned</span></div>
+        <div class="result-row"><span class="result-label">Word Count</span><span class="result-value">12,400 words</span></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-card-header">Required Updates</div>
+      <div class="result-card-body">
+        <div class="flags">
+          <span class="flag red">✗ Missing: 2025 MLR amendments reference</span>
+          <span class="flag amber">⚠ CDD thresholds outdated (still €15k, now €10k)</span>
+          <span class="flag green">✓ SAR reporting procedure current</span>
+          <span class="flag green">✓ Board oversight section adequate</span>
+          <span class="flag green">✓ Training requirements section current</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+
+// ─── APP LOGIC ─────────────────────────────────────────────────
+
+const params = new URLSearchParams(window.location.search);
+const useCase = params.get('use') || 'document-processing';
+const config = USE_CASES[useCase] || USE_CASES['document-processing'];
+
+let selectedSample = null;
+let isProcessing = false;
+
+// Initialize UI
+function init() {
+  document.getElementById('useCaseBadge').textContent = config.badge;
+  document.getElementById('heroLabel').textContent = config.label;
+  document.getElementById('heroTitle').innerHTML = config.heroTitle + '<span class="grad" id="heroGrad">' + config.heroGrad + '</span>';
+  document.getElementById('heroSubtitle').textContent = config.subtitle;
+  document.getElementById('toolbarLabel').textContent = config.toolbarLabel;
+  document.getElementById('uploadIcon').textContent = config.uploadIcon;
+  document.getElementById('uploadTitle').textContent = config.uploadTitle;
+  document.getElementById('uploadSubtitle').textContent = config.uploadSubtitle;
+
+  // Render sample docs
+  const container = document.getElementById('sampleDocs');
+  config.samples.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'sample-doc';
+    el.innerHTML = `<span>${s.icon}</span> ${s.name}`;
+    el.addEventListener('click', () => selectSample(s.id, el));
+    container.appendChild(el);
+  });
+
+  // Upload zone interactions
+  const zone = document.getElementById('uploadZone');
+  zone.addEventListener('click', () => {
+    if (!selectedSample) {
+      selectSample(config.samples[0].id, document.querySelector('.sample-doc'));
+    }
+  });
+  zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zone.classList.remove('dragover');
+    if (e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      selectFile(file.name);
+    }
+  });
+
+  // Process button
+  document.getElementById('processBtn').addEventListener('click', runProcessing);
+}
+
+function selectSample(id, el) {
+  if (isProcessing) return;
+  selectedSample = id;
+  document.querySelectorAll('.sample-doc').forEach(d => d.classList.remove('selected'));
+  if (el) el.classList.add('selected');
+
+  const sample = config.samples.find(s => s.id === id);
+  const zone = document.getElementById('uploadZone');
+  zone.classList.add('has-file');
+  document.getElementById('uploadIcon').textContent = '✓';
+  document.getElementById('uploadTitle').textContent = 'Document loaded';
+  document.getElementById('fileName').textContent = sample.name;
+  document.getElementById('fileName').classList.remove('hidden');
+  document.getElementById('uploadSubtitle').classList.add('hidden');
+  document.getElementById('processBtn').disabled = false;
+}
+
+function selectFile(name) {
+  selectedSample = config.samples[0].id;
+  const zone = document.getElementById('uploadZone');
+  zone.classList.add('has-file');
+  document.getElementById('uploadIcon').textContent = '✓';
+  document.getElementById('uploadTitle').textContent = 'Document loaded';
+  document.getElementById('fileName').textContent = name;
+  document.getElementById('fileName').classList.remove('hidden');
+  document.getElementById('uploadSubtitle').classList.add('hidden');
+  document.getElementById('processBtn').disabled = false;
+}
+
+async function runProcessing() {
+  if (isProcessing || !selectedSample) return;
+  isProcessing = true;
+
+  document.getElementById('processBtn').disabled = true;
+  document.getElementById('processingSection').classList.remove('hidden');
+
+  // Build step list
+  const stepList = document.getElementById('stepList');
+  stepList.innerHTML = '';
+  config.steps.forEach((step, i) => {
+    const div = document.createElement('div');
+    div.className = 'step';
+    div.id = 'step-' + i;
+    div.innerHTML = `
+      <div class="step-icon">•</div>
+      <span>${step}</span>
+      <span class="step-time"></span>
+    `;
+    stepList.appendChild(div);
+  });
+
+  // Scroll to processing
+  document.getElementById('processingSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // Animate steps
+  let elapsed = 0;
+  for (let i = 0; i < config.steps.length; i++) {
+    const stepEl = document.getElementById('step-' + i);
+    stepEl.classList.add('active');
+    stepEl.querySelector('.step-icon').innerHTML = '<div class="spinner" style="width:14px;height:14px;border-width:2px;"></div>';
+
+    const delay = 400 + Math.random() * 600;
+    await sleep(delay);
+    elapsed += delay;
+
+    stepEl.classList.remove('active');
+    stepEl.classList.add('done');
+    stepEl.querySelector('.step-icon').textContent = '✓';
+    stepEl.querySelector('.step-time').textContent = (elapsed / 1000).toFixed(1) + 's';
+  }
+
+  // Done
+  document.getElementById('processingSpinner').classList.add('hidden');
+  document.getElementById('processingLabel').textContent = 'Processing complete';
+  document.getElementById('processingLabel').style.color = 'var(--green)';
+
+  // Show results
+  await sleep(400);
+  const resultsSection = document.getElementById('resultsSection');
+  resultsSection.innerHTML = config.getResults(selectedSample);
+  resultsSection.classList.remove('hidden');
+
+  // Show stats
+  const statsBar = document.getElementById('statsBar');
+  document.getElementById('statTime').textContent = config.stats.time;
+  document.getElementById('statFields').textContent = config.stats.fields;
+  document.getElementById('statConfidence').textContent = config.stats.confidence;
+  statsBar.classList.remove('hidden');
+
+  resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// Boot
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>

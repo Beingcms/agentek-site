@@ -1188,6 +1188,7 @@ export default function AgenTekSite() {
   const scrollTo = (id) => { if (page !== "home") setPage("home"); setMenuOpen(false); setTimeout(() => refs[id]?.current?.scrollIntoView({ behavior: "smooth", block: "start" }), page === "home" ? 0 : 100); };
 
   const isHome = page === "home";
+  const isPlatform = page === "platform";
   const navDark = isHome && !scrolled;
 
   return (
@@ -1219,6 +1220,7 @@ export default function AgenTekSite() {
       <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, padding: "1rem 2rem", display: "flex", justifyContent: "space-between", alignItems: "center", background: navDark ? "rgba(255,255,255,0.02)" : "rgba(255,255,255,0.95)", backdropFilter: "blur(24px)", borderBottom: `1px solid ${navDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`, transition: "all 0.4s" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", cursor: "pointer" }} onClick={() => goPage("home")} role="link" tabIndex={0} onKeyDown={e => e.key === "Enter" && goPage("home")} aria-label="AgenTek Labs — home"><SiteLogo size={40} light={navDark} /><span style={{ fontWeight: 800, fontSize: "1.3rem", color: navDark ? "#fff" : "#0F172A", letterSpacing: "-0.02em" }}>AgenTek <span style={{ fontWeight: 400, color: navDark ? "rgba(255,255,255,0.5)" : "#9CA3AF" }}>Labs</span></span></div>
         <div className="desk" style={{ display: "flex", gap: "2.5rem", alignItems: "center" }}>
+          <a onClick={() => goPage("platform")} role="button" tabIndex={0} onKeyDown={e => e.key === "Enter" && goPage("platform")} style={{ fontSize: "1rem", color: navDark ? "rgba(255,255,255,0.75)" : "#374151", cursor: "pointer", fontWeight: 600, textDecoration: "none" }}>Platform</a>
           <a onClick={openBuilder} role="button" tabIndex={0} onKeyDown={e => e.key === "Enter" && openBuilder()} style={{ fontSize: "1rem", color: "#2563EB", cursor: "pointer", fontWeight: 600, textDecoration: "none" }}>Agent Builder</a>
           <a onClick={() => scrollTo("about")} role="button" tabIndex={0} onKeyDown={e => e.key === "Enter" && scrollTo("about")} style={{ fontSize: "1rem", color: navDark ? "rgba(255,255,255,0.75)" : "#374151", cursor: "pointer", fontWeight: 500, textDecoration: "none" }}>About</a>
           <a onClick={openModal} role="button" tabIndex={0} onKeyDown={e => e.key === "Enter" && openModal()} style={{ background: "#F97316", color: "#fff", padding: "0.65rem 1.5rem", borderRadius: 8, fontWeight: 600, fontSize: "1rem", cursor: "pointer", textDecoration: "none", transition: "background 0.2s", letterSpacing: "-0.01em" }} onMouseEnter={e => e.currentTarget.style.background = "#EA580C"} onMouseLeave={e => e.currentTarget.style.background = "#F97316"}>Let's Talk</a>
@@ -1229,6 +1231,7 @@ export default function AgenTekSite() {
       {/* MOBILE MENU */}
       {menuOpen && <div style={{ position: "fixed", inset: 0, background: "#0A0F1E", zIndex: 1001, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "2.5rem" }}>
         <button onClick={() => setMenuOpen(false)} style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: "none", cursor: "pointer" }}><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+        <a onClick={() => goPage("platform")} style={{ fontSize: "1.3rem", color: "rgba(255,255,255,0.8)", cursor: "pointer", fontWeight: 600, textDecoration: "none" }}>Platform</a>
         <a onClick={openBuilder} style={{ fontSize: "1.3rem", color: "#F97316", cursor: "pointer", fontWeight: 600, textDecoration: "none" }}>Agent Builder</a>
         <a onClick={() => scrollTo("about")} style={{ fontSize: "1.3rem", color: "rgba(255,255,255,0.8)", cursor: "pointer", textDecoration: "none" }}>About</a>
         <a onClick={openModal} style={{ fontSize: "1.3rem", color: "#F97316", cursor: "pointer", textDecoration: "none" }}>Let's Talk</a>
@@ -1515,6 +1518,185 @@ export default function AgenTekSite() {
                 <div style={{ marginTop: "1.25rem", fontSize: "0.9rem", color: "rgba(255,255,255,0.4)", textAlign: "center" }}>Or reach out: <a href="mailto:hello@agentek.co.uk" style={{ color: "#F97316", textDecoration: "none", fontWeight: 600 }}>hello@agentek.co.uk</a></div>
               </div>
             </div>
+          </div>
+        </section>
+      </>}
+
+      {/* PLATFORM PAGE */}
+      {isPlatform && <>
+        {/* PLATFORM HERO */}
+        <section style={{ background: "#0A0F1E", color: "#fff", minHeight: "70vh", display: "flex", alignItems: "center", paddingTop: "6rem", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", top: -200, left: "50%", transform: "translateX(-50%)", width: 900, height: 600, background: "radial-gradient(ellipse, rgba(37,99,235,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+          <div style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 2rem", textAlign: "center", position: "relative", zIndex: 1 }}>
+            <div style={{ display: "inline-block", fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.12em", color: "#06B6D4", background: "rgba(6,182,212,0.1)", padding: "0.4rem 1rem", borderRadius: 20, border: "1px solid rgba(6,182,212,0.15)", marginBottom: "1.5rem" }}>THE AGENTEK PLATFORM</div>
+            <h1 style={{ fontFamily: "'Inter',sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.08, marginBottom: "1.25rem", opacity: 0, animation: "fadeUp 0.7s 0.1s ease-out forwards" }}>
+              Make AI useful in real business work<br /><span style={{ background: "linear-gradient(135deg, #3B82F6, #06B6D4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>without losing control</span>
+            </h1>
+            <p style={{ fontSize: "1.2rem", color: "rgba(255,255,255,0.6)", maxWidth: 640, margin: "0 auto 2.5rem", lineHeight: 1.7, opacity: 0, animation: "fadeUp 0.7s 0.25s ease-out forwards" }}>
+              AgenTek Platform connects to the systems you already use, lets AI handle the messy parts of a workflow, brings in people when something needs checking, and keeps a record of every step.
+            </p>
+            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", opacity: 0, animation: "fadeUp 0.7s 0.4s ease-out forwards", flexWrap: "wrap" }}>
+              <a onClick={openModal} style={{ display: "inline-flex", padding: "0.9rem 2rem", background: "#F97316", color: "#fff", borderRadius: 10, fontWeight: 600, cursor: "pointer", textDecoration: "none", transition: "background 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "#EA580C"} onMouseLeave={e => e.currentTarget.style.background = "#F97316"}>Book a Call</a>
+              <a onClick={openBuilder} style={{ display: "inline-flex", padding: "0.9rem 2rem", background: "rgba(255,255,255,0.08)", color: "#fff", borderRadius: 10, fontWeight: 600, cursor: "pointer", textDecoration: "none", border: "1px solid rgba(255,255,255,0.15)", transition: "background 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.12)"} onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.08)"}>Try the Agent Builder</a>
+            </div>
+          </div>
+        </section>
+
+        {/* THREE PILLARS */}
+        <section style={{ padding: "5rem 2rem", background: "#fff" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+              <h2 style={{ fontFamily: "'Inter',sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>The Operating Principle</h2>
+              <p style={{ fontSize: "1.1rem", color: "#64748B", maxWidth: 600, margin: "0 auto" }}>Every workflow we build follows one rule.</p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2rem" }} className="g3">
+              {[
+                { icon: "🧠", title: "AI for Judgment", desc: "AI handles the messy, interpretation-heavy parts: reading documents, classifying cases, extracting meaning, drafting recommendations.", color: "#3B82F6" },
+                { icon: "⚙️", title: "Software for Control", desc: "Deterministic logic manages routing, permissions, approvals, thresholds, and system updates. Predictable. Auditable. No surprises.", color: "#06B6D4" },
+                { icon: "👤", title: "Humans for Oversight", desc: "People step in where judgment matters most: exceptions, sensitive decisions, quality checks, and final approvals.", color: "#F97316" },
+              ].map((p, i) => (
+                <div key={i} style={{ background: "#FAFBFF", borderRadius: 16, border: "1px solid rgba(0,0,0,0.06)", padding: "2.5rem 2rem", textAlign: "center", animation: `slideUp 0.5s ${i * 0.15}s ease-out both` }}>
+                  <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{p.icon}</div>
+                  <h3 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.75rem", color: p.color }}>{p.title}</h3>
+                  <p style={{ fontSize: "0.95rem", color: "#64748B", lineHeight: 1.7 }}>{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ARCHITECTURE DIAGRAM */}
+        <section style={{ padding: "5rem 2rem", background: "#0A0F1E", color: "#fff" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+              <div style={{ fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.12em", color: "#F97316", marginBottom: "0.75rem" }}>HOW IT WORKS</div>
+              <h2 style={{ fontFamily: "'Inter',sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1 }}>One Platform, Four Layers</h2>
+            </div>
+            <div style={{ maxWidth: 800, margin: "0 auto" }}>
+              {[
+                { layer: "Workflow Solutions", items: ["Onboarding", "Claims Intake", "Document Ops", "Compliance"], color: "#F97316", desc: "Ready-made workflow packs for high-friction operational processes" },
+                { layer: "Process Control", items: ["Policy Engine", "Approvals", "Routing", "Thresholds", "Exceptions"], color: "#3B82F6", desc: "Deterministic logic that governs when AI acts, when humans step in, and what happens next" },
+                { layer: "Context + Permissions", items: ["Data Access", "Action Rights", "Identity", "Business Rules"], color: "#06B6D4", desc: "Controls what each workflow step can see and do, across all connected systems" },
+                { layer: "Your Systems", items: ["Salesforce", "ServiceNow", "SharePoint", "Email", "APIs", "Legacy"], color: "#64748B", desc: "Connects to the stack you already have — no rip-and-replace" },
+              ].map((l, i) => (
+                <div key={i} style={{ marginBottom: i < 3 ? "0.5rem" : 0, animation: `slideUp 0.5s ${i * 0.12}s ease-out both` }}>
+                  <div style={{ background: `${l.color}15`, border: `1px solid ${l.color}40`, borderRadius: 14, padding: "1.5rem 2rem", position: "relative" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem", flexWrap: "wrap", gap: "0.5rem" }}>
+                      <span style={{ fontWeight: 700, fontSize: "1rem", color: l.color }}>{l.layer}</span>
+                      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                        {l.items.map((item, j) => (
+                          <span key={j} style={{ fontSize: "0.75rem", background: `${l.color}20`, color: l.color, padding: "0.25rem 0.6rem", borderRadius: 6, fontWeight: 500 }}>{item}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{l.desc}</p>
+                  </div>
+                  {i < 3 && <div style={{ textAlign: "center", padding: "0.25rem 0" }}>
+                    <svg width="24" height="20" viewBox="0 0 24 20"><path d="M12 0v16M6 10l6 6 6-6" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" /></svg>
+                  </div>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WHAT IT DOES — STEP BY STEP */}
+        <section style={{ padding: "5rem 2rem", background: "#FAFBFF" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+              <h2 style={{ fontFamily: "'Inter',sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>What Happens Inside a Workflow</h2>
+              <p style={{ fontSize: "1rem", color: "#64748B" }}>Every process follows the same pattern — safe, governed, traceable.</p>
+            </div>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {[
+                { num: "1", title: "Work arrives", desc: "A document lands, a case is opened, an application is submitted. The platform picks it up.", icon: "📥" },
+                { num: "2", title: "Context is pulled", desc: "Customer records, policy data, case history, documents — gathered from the systems you already use.", icon: "🔗" },
+                { num: "3", title: "Permissions are checked", desc: "The platform checks what this workflow step is allowed to see, access, and act on.", icon: "🔒" },
+                { num: "4", title: "AI handles the messy part", desc: "Read the document. Classify the case. Extract data. Draft a recommendation. Score confidence.", icon: "🧠" },
+                { num: "5", title: "Rules decide what happens next", desc: "If confidence is high enough, continue. If not, escalate. If sensitive, route to a human.", icon: "⚙️" },
+                { num: "6", title: "A person steps in when needed", desc: "The reviewer sees the AI output, the evidence, and the recommended action. Approve, edit, or escalate.", icon: "👤" },
+                { num: "7", title: "Systems are updated", desc: "CRM updated. Case closed. Document filed. Email sent. All downstream actions completed safely.", icon: "✅" },
+                { num: "8", title: "Everything is recorded", desc: "Full audit trail: what the AI did, what the human approved, what changed, and why.", icon: "📋" },
+              ].map((s, i) => (
+                <div key={i} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start", background: "#fff", borderRadius: 12, border: "1px solid rgba(0,0,0,0.06)", padding: "1.25rem 1.5rem", animation: `slideUp 0.4s ${i * 0.08}s ease-out both` }}>
+                  <div style={{ width: 44, height: 44, borderRadius: "50%", background: "#EFF6FF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", flexShrink: 0 }}>{s.icon}</div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: "1rem", marginBottom: "0.25rem" }}>{s.title}</div>
+                    <div style={{ fontSize: "0.9rem", color: "#64748B", lineHeight: 1.6 }}>{s.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WORKFLOW PACKS */}
+        <section style={{ padding: "5rem 2rem", background: "#fff" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+              <div style={{ fontSize: "0.85rem", fontWeight: 600, letterSpacing: "0.12em", color: "#F97316", marginBottom: "0.75rem" }}>READY-MADE SOLUTIONS</div>
+              <h2 style={{ fontFamily: "'Inter',sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>Workflow Packs</h2>
+              <p style={{ fontSize: "1.1rem", color: "#64748B", maxWidth: 600, margin: "0 auto" }}>Pre-built solutions for the workflows that drain the most operational time.</p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.5rem" }} className="g2">
+              {[
+                { title: "Regulated Onboarding", icon: "👤", sectors: "Financial Services · Insurance · Professional Services", pain: "Days of manual checks, document chasing, and approval queues for every new client, employee, or supplier.", solves: "Automated identity verification, compliance checks, risk scoring, and approval routing — with humans at every critical decision point.", kpi: "Onboarding time from days to hours" },
+                { title: "Claims & Case Intake", icon: "🛡", sectors: "Insurance · Healthcare · Service Operations", pain: "Every claim, referral, or case sits in a queue waiting to be read, classified, and routed by hand.", solves: "AI classifies, assesses severity, checks coverage, detects anomalies, and routes to the right team — escalating uncertain cases to a reviewer.", kpi: "First-touch triage time cut by 80%" },
+                { title: "Document Operations", icon: "📄", sectors: "Finance Ops · Legal · Logistics · Underwriting", pain: "70% of documents process fine, but the exceptions eat all your time: mismatches, missing fields, ambiguous data.", solves: "AI extracts and validates, rules handle the clean cases, humans get a focused queue of only the exceptions that need judgment.", kpi: "Manual document handling reduced by 90%" },
+                { title: "Compliance Screening", icon: "⚖️", sectors: "Financial Services · Insurance · Professional Services", pain: "Every document, communication, and promotion needs checking against regulatory requirements before it goes out.", solves: "AI scans against regulatory frameworks, flags prohibited language, checks mandatory disclosures, generates compliance reports with full audit trail.", kpi: "Compliance review time cut by 70%" },
+              ].map((w, i) => (
+                <div key={i} style={{ background: "#FAFBFF", borderRadius: 16, border: "1px solid rgba(0,0,0,0.06)", padding: "2rem", animation: `slideUp 0.5s ${i * 0.1}s ease-out both` }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+                    <span style={{ fontSize: "1.8rem" }}>{w.icon}</span>
+                    <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>{w.title}</h3>
+                  </div>
+                  <div style={{ fontSize: "0.8rem", color: "#2563EB", fontWeight: 500, marginBottom: "1rem" }}>{w.sectors}</div>
+                  <div style={{ marginBottom: "0.75rem" }}>
+                    <div style={{ fontSize: "0.8rem", fontWeight: 600, color: "#94A3B8", marginBottom: "0.3rem" }}>THE PAIN</div>
+                    <p style={{ fontSize: "0.9rem", color: "#64748B", lineHeight: 1.6 }}>{w.pain}</p>
+                  </div>
+                  <div style={{ marginBottom: "0.75rem" }}>
+                    <div style={{ fontSize: "0.8rem", fontWeight: 600, color: "#94A3B8", marginBottom: "0.3rem" }}>WHAT THE PLATFORM DOES</div>
+                    <p style={{ fontSize: "0.9rem", color: "#4B5563", lineHeight: 1.6 }}>{w.solves}</p>
+                  </div>
+                  <div style={{ background: "#EFF6FF", borderRadius: 8, padding: "0.6rem 1rem", fontSize: "0.85rem", fontWeight: 600, color: "#2563EB" }}>{w.kpi}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WHY AGENTEK */}
+        <section style={{ padding: "5rem 2rem", background: "#0A0F1E", color: "#fff" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+              <h2 style={{ fontFamily: "'Inter',sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: "1rem" }}>Why AgenTek</h2>
+              <p style={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.5)" }}>What makes this different from another AI consultancy.</p>
+            </div>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {[
+                { title: "We start with your workflow, not our technology", desc: "We don't sell models or frameworks. We map your actual process, find the bottleneck, and fix it. The AI is just the tool." },
+                { title: "We work on your stack, not ours", desc: "Salesforce, ServiceNow, AWS, Azure, SharePoint, legacy systems — the platform connects to what you already have. No rip-and-replace." },
+                { title: "We keep humans in control", desc: "AI handles the routine. Software enforces the rules. People make the calls that matter. Every action is gated, reviewed, and recorded." },
+                { title: "We prove it fast", desc: "2-week discovery sprint. 6-8 week pilot. Working prototype, live metrics, measurable outcome. Not a 6-month strategy programme." },
+                { title: "Enterprise-grade without enterprise overhead", desc: "Audit trails, governance, compliance controls — without the big-firm team, timeline, or price tag." },
+              ].map((r, i) => (
+                <div key={i} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.08)", padding: "1.5rem 2rem", animation: `slideUp 0.4s ${i * 0.1}s ease-out both` }}>
+                  <h4 style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: "0.4rem", color: "#fff" }}>{r.title}</h4>
+                  <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{r.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PLATFORM CTA */}
+        <section style={{ padding: "5rem 2rem", background: "#FAFBFF", textAlign: "center" }}>
+          <div style={{ maxWidth: 700, margin: "0 auto" }}>
+            <h2 style={{ fontFamily: "'Inter',sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: "1rem" }}>See What This Looks Like for Your Business</h2>
+            <p style={{ fontSize: "1.1rem", color: "#64748B", marginBottom: "2rem", lineHeight: 1.7 }}>We'll map one of your workflows, show you where AI fits, and build a working proof-of-concept. Free discovery call, no commitment.</p>
+            <a onClick={openModal} style={{ display: "inline-flex", padding: "1rem 2.5rem", background: "#F97316", color: "#fff", borderRadius: 10, fontWeight: 600, fontSize: "1.1rem", cursor: "pointer", textDecoration: "none", transition: "background 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "#EA580C"} onMouseLeave={e => e.currentTarget.style.background = "#F97316"}>Book a 20-Minute Call</a>
+            <div style={{ marginTop: "1.5rem", fontSize: "0.9rem", color: "#94A3B8" }}>Or email <a href="mailto:chandra@agentek.co.uk" style={{ color: "#F97316", textDecoration: "none", fontWeight: 600 }}>chandra@agentek.co.uk</a></div>
           </div>
         </section>
       </>}
