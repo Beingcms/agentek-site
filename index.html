@@ -5,10 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Agentek helps enterprises design, govern, and deploy AI workflows across real systems, controls, and operational constraints."
+      content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production. Built for real systems, real controls, real operational constraints."
     />
-    <title>Agentek</title>
-    <link rel="icon" href="/favicon.svg" />
+    <title>Agentek — Enterprise AI architecture, governance, and production delivery</title>
+    <meta property="og:title" content="Agentek — Enterprise AI architecture, governance, and production delivery" />
+    <meta
+      property="og:description"
+      content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.agentek.co.uk/" />
+    <meta property="og:image" content="https://www.agentek.co.uk/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Agentek — Enterprise AI architecture, governance, and production delivery"
+    />
+    <meta
+      name="twitter:description"
+      content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production."
+    />
+    <meta name="twitter:image" content="https://www.agentek.co.uk/og-image.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -212,6 +231,7 @@
 
       .pill-row {
         margin-top: 34px;
+        gap: 12px;
       }
 
       .pill {
@@ -345,7 +365,17 @@
         border-radius: var(--radius-md);
         padding: 26px;
         box-shadow: 0 14px 34px -32px rgba(15, 23, 42, 0.46);
-        font-size: 1.08rem;
+      }
+
+      .simple-card h3 {
+        font-size: 1.12rem;
+      }
+
+      .simple-card p {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.7;
       }
 
       .dark-section {
@@ -401,6 +431,10 @@
         font-size: 0.92rem;
       }
 
+      .contact-box a {
+        color: var(--text);
+      }
+
       .contact-panel {
         border-radius: var(--radius-xl);
         padding: 34px;
@@ -440,6 +474,23 @@
       .site-footer {
         border-top: 1px solid var(--line);
         background: #fff;
+      }
+
+      .closing-cta {
+        background: #020617;
+        color: #fff;
+      }
+
+      .closing-cta .wrap {
+        padding: 34px 0;
+        text-align: center;
+      }
+
+      .closing-cta p {
+        color: #cbd5e1;
+        font-size: 1.02rem;
+        line-height: 1.7;
+        margin-top: 10px;
       }
 
       .footer-row {
@@ -514,7 +565,6 @@
           <a href="#what-we-do">What We Do</a>
           <a href="#use-cases">Use Cases</a>
           <a href="#how-we-deliver">How We Deliver</a>
-          <a href="#insights">Insights</a>
           <a href="#contact">Contact</a>
         </nav>
         <a href="#contact" class="button button-primary">Book a call</a>
@@ -623,12 +673,30 @@
             Designed for workflow-heavy, regulated, and operationally complex environments
           </h2>
           <div class="grid-3">
-            <div class="simple-card">Document intake and triage</div>
-            <div class="simple-card">Client onboarding and KYC</div>
-            <div class="simple-card">Claims and servicing workflows</div>
-            <div class="simple-card">Knowledge-grounded operations support</div>
-            <div class="simple-card">Compliance and review workflows</div>
-            <div class="simple-card">Workflow assurance and escalation</div>
+            <article class="simple-card">
+              <h3>Document intake and triage</h3>
+              <p>Automated classification, extraction, and routing of inbound documents with human review thresholds for exceptions.</p>
+            </article>
+            <article class="simple-card">
+              <h3>Client onboarding and KYC</h3>
+              <p>Agent-led onboarding workflows with compliance-bounded controls and full audit trail for regulated industries.</p>
+            </article>
+            <article class="simple-card">
+              <h3>Claims and servicing workflows</h3>
+              <p>Multi-step claims processing with deterministic SOPs, escalation paths, and integration into case management systems.</p>
+            </article>
+            <article class="simple-card">
+              <h3>Knowledge-grounded operations support</h3>
+              <p>Retrieval-grounded agents that answer operational queries from your own knowledge base, with confidence thresholds and citations.</p>
+            </article>
+            <article class="simple-card">
+              <h3>Compliance and review workflows</h3>
+              <p>AI-assisted review with human-in-the-loop sign-off, designed for environments where audit and explainability are non-negotiable.</p>
+            </article>
+            <article class="simple-card">
+              <h3>Workflow assurance and escalation</h3>
+              <p>Monitoring, exception handling, and escalation logic built in from day one — not bolted on later.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -693,9 +761,10 @@
             <div class="dark-card" style="margin-top: 28px;">
               <h3 style="color: #6ee7b7; font-size: 1rem;">Delivery ecosystem</h3>
               <p>
-                Built by Agentek. Delivered with trusted implementation support
-                where needed. The client relationship, architectural control,
-                and outcome accountability stay with Agentek.
+                Agentek leads architecture, governance, and outcome.
+                Implementation is delivered through selected specialist
+                engineering partners under Agentek's accountability. The client
+                relationship and architectural control stay with Agentek.
               </p>
             </div>
           </div>
@@ -743,68 +812,64 @@
           </h2>
           <div class="grid-3">
             <article class="card">
-              <h3>Regulated operations</h3>
+              <h3>Regulated industry experience</h3>
               <p>
-                Experience across enterprise environments where security,
-                controls, and operational resilience matter.
+                Delivery experience in environments where audit, compliance, and
+                operational resilience are non-negotiable. Legal, financial
+                services, and other regulated workflows.
               </p>
             </article>
             <article class="card">
-              <h3>Complex workflows</h3>
+              <h3>Production-grade architecture</h3>
               <p>
-                Focus on document-heavy, service-heavy, and decision-heavy
-                processes rather than generic chatbot use cases.
+                Built on LangChain, LangGraph, vector stores, and major cloud
+                platforms. Deployable into client-controlled environments for
+                GDPR and data residency compliance.
               </p>
             </article>
             <article class="card">
-              <h3>Pragmatic delivery</h3>
+              <h3>Governed by design</h3>
               <p>
-                Designed to bridge strategy, architecture, and implementation
-                instead of leaving clients to stitch the pieces together.
+                Human-in-the-loop, confidence thresholds, escalation paths, and
+                audit trails built into every workflow from the architecture
+                stage. Not retrofitted afterwards.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="insights" class="section section-alt">
+      <section class="section section-alt" style="padding-top: 0;">
         <div class="container">
-          <div class="insights-head">
-            <div>
-              <p class="section-label">Insights</p>
-              <h2 style="max-width: 16ch;">
-                Thinking for buyers, architects, and operators
-              </h2>
+          <div
+            style="
+              border-top: 1px solid var(--line);
+              padding-top: 34px;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 12px 18px;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <div style="font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; color: #64748b;">
+              Technology foundation
             </div>
-            <a href="#contact" class="inline-link">Ask about these topics</a>
-          </div>
-          <div class="grid-3">
-            <article class="card">
-              <div class="tag">Point of view</div>
-              <h3 style="margin-top: 18px;">Why most enterprise AI stalls before production</h3>
-              <p>
-                A short sharp perspective piece designed to show how Agentek
-                thinks about enterprise AI in the real world.
-              </p>
-            </article>
-            <article class="card">
-              <div class="tag">Governance</div>
-              <h3 style="margin-top: 18px;">Human-in-the-loop design that actually works</h3>
-              <p>
-                A short sharp perspective piece designed to show how Agentek
-                thinks about enterprise AI in the real world.
-              </p>
-            </article>
-            <article class="card">
-              <div class="tag">Architecture</div>
-              <h3 style="margin-top: 18px;">
-                Choosing between deterministic software and agentic workflows
-              </h3>
-              <p>
-                A short sharp perspective piece designed to show how Agentek
-                thinks about enterprise AI in the real world.
-              </p>
-            </article>
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                color: #475569;
+                font-size: 0.92rem;
+              "
+            >
+              <span class="pill">LangChain</span>
+              <span class="pill">LangGraph</span>
+              <span class="pill">AWS</span>
+              <span class="pill">Azure</span>
+              <span class="pill">Google Cloud</span>
+            </div>
           </div>
         </div>
       </section>
@@ -825,8 +890,11 @@
                 <strong>hello@agentek.co.uk</strong>
               </div>
               <div class="contact-box">
-                <small>Phone</small>
-                <strong>07534524985</strong>
+                <small>Book a call</small>
+                <strong>Book a 30-minute intro call</strong>
+                <div style="margin-top: 14px;">
+                  <a href="https://calendly.com/agentek" class="button button-secondary">Open booking link</a>
+                </div>
               </div>
               <div class="contact-box">
                 <small>Best for</small>
@@ -845,16 +913,22 @@
       </section>
     </main>
 
+    <section class="closing-cta">
+      <div class="container wrap">
+        <h2 style="max-width: none; font-size: clamp(1.7rem, 3vw, 2.6rem);">
+          Talk to us before you scope your next AI project.
+        </h2>
+        <p>We'll help you decide what should and shouldn't be built.</p>
+        <div style="margin-top: 22px;">
+          <a href="https://calendly.com/agentek" class="button button-primary">Book a call</a>
+        </div>
+      </div>
+    </section>
+
     <footer class="site-footer">
       <div class="container footer-row">
         <div class="footer-copy">
-          <p>© <span id="year"></span> Agentek. Enterprise AI architecture and delivery.</p>
-          <p>
-            Agentek Labs Limited, registered in England and Wales. Company No.
-            17041966. Registered office: Belmont Suite Paragon Business Park,
-            Chorley New Road, Bolton, Lancashire, United Kingdom, BL6 6HG.
-            Phone: 07534524985.
-          </p>
+          <p>© <span id="year"></span> Agentek Labs Limited. Registered in England &amp; Wales. Company No. 17041966.</p>
         </div>
         <div class="footer-links">
           <a href="#what-we-do">What We Do</a>
