@@ -3,697 +3,606 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production. Built for real systems, real controls, real operational constraints."
-    />
+    <meta name="description" content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production. Built for real systems, real controls, real operational constraints." />
     <title>Agentek — Enterprise AI architecture, governance, and production delivery</title>
     <meta property="og:title" content="Agentek — Enterprise AI architecture, governance, and production delivery" />
-    <meta
-      property="og:description"
-      content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production."
-    />
+    <meta property="og:description" content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.agentek.co.uk/" />
     <meta property="og:image" content="https://www.agentek.co.uk/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Agentek — Enterprise AI architecture, governance, and production delivery"
-    />
-    <meta
-      name="twitter:description"
-      content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production."
-    />
+    <meta name="twitter:title" content="Agentek — Enterprise AI architecture, governance, and production delivery" />
+    <meta name="twitter:description" content="Agentek designs and deploys governed AI workflows for regulated enterprises — from architecture through production." />
     <meta name="twitter:image" content="https://www.agentek.co.uk/og-image.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #ffffff;
-        --text: #0f172a;
-        --muted: #475569;
-        --soft: #f8fafc;
-        --line: rgba(148, 163, 184, 0.24);
-        --line-strong: rgba(148, 163, 184, 0.38);
-        --accent: #059669;
-        --accent-soft: rgba(5, 150, 105, 0.1);
-        --panel-shadow: 0 20px 60px -35px rgba(15, 23, 42, 0.28);
-        --radius-xl: 32px;
-        --radius-lg: 28px;
-        --radius-md: 24px;
-        --content: 1180px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        min-width: 320px;
-        color: var(--text);
-        background:
-          radial-gradient(circle at top left, rgba(15, 23, 42, 0.04), transparent 28%),
-          radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 24%),
-          var(--bg);
-        font-family: "Plus Jakarta Sans", sans-serif;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .container {
-        width: min(calc(100% - 48px), var(--content));
-        margin: 0 auto;
-      }
-
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(14px);
-      }
-
-      .header-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        padding: 18px 0;
-      }
-
-      .brand {
-        font-size: 1.25rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-      }
-
-      .nav {
-        display: flex;
-        gap: 28px;
-        color: #64748b;
-        font-size: 0.95rem;
-      }
-
-      .nav a:hover,
-      .footer-links a:hover {
-        color: var(--text);
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 999px;
-        padding: 14px 24px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
-      }
-
-      .button:hover {
-        transform: translateY(-1px);
-      }
-
-      .button-primary {
-        background: var(--text);
-        color: #fff;
-      }
-
-      .button-primary:hover {
-        background: #1e293b;
-      }
-
-      .button-secondary {
-        border: 1px solid var(--line-strong);
-        background: #fff;
-        color: var(--text);
-      }
-
-      .button-secondary:hover {
-        background: var(--soft);
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        border: 1px solid var(--line);
-        background: rgba(248, 250, 252, 0.96);
-        border-radius: 999px;
-        padding: 10px 16px;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-size: 0.72rem;
-        color: #475569;
-      }
-
-      .section-label {
-        margin: 0 0 18px;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-size: 0.78rem;
-        color: var(--accent);
-      }
-
-      .hero {
-        padding: 56px 0 72px;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-        gap: 56px;
-        align-items: start;
-      }
-
-      h1 {
-        margin: 28px 0 0;
-        max-width: 14ch;
-        font-size: clamp(3rem, 7vw, 5.4rem);
-        line-height: 0.97;
-        letter-spacing: -0.055em;
-      }
-
-      h2 {
-        margin: 0;
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        line-height: 1.05;
-        letter-spacing: -0.04em;
-      }
-
-      h3 {
-        margin: 0;
-        font-size: 1.35rem;
-        line-height: 1.2;
-        letter-spacing: -0.03em;
-      }
-
-      p {
-        margin: 0;
-      }
-
-      .lead {
-        margin-top: 24px;
-        max-width: 42rem;
-        color: var(--muted);
-        font-size: 1.125rem;
-        line-height: 1.8;
-      }
-
-      .hero-actions,
-      .pill-row,
-      .contact-actions,
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .hero-actions {
-        margin-top: 34px;
-      }
-
-      .pill-row {
-        margin-top: 34px;
-        gap: 12px;
-      }
-
-      .pill {
-        border: 1px solid var(--line);
-        background: #fff;
-        border-radius: 999px;
-        padding: 10px 15px;
-        color: #475569;
-        font-size: 0.92rem;
-        box-shadow: 0 8px 24px -22px rgba(15, 23, 42, 0.45);
-      }
-
-      .panel,
-      .card {
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.96);
-        box-shadow: var(--panel-shadow);
-      }
-
-      .panel {
-        border-radius: var(--radius-xl);
-        padding: 28px;
-      }
-
-      .card {
-        border-radius: var(--radius-lg);
-        padding: 28px;
-      }
-
-      .hero-panel-title {
-        margin-bottom: 18px;
-        color: #64748b;
-        font-size: 0.92rem;
-        font-weight: 600;
-      }
-
-      .detail-list {
-        display: grid;
-        gap: 14px;
-      }
-
-      .detail-item {
-        border: 1px solid var(--line);
-        background: var(--soft);
-        border-radius: 22px;
-        padding: 18px;
-      }
-
-      .detail-item strong {
-        display: block;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-size: 0.68rem;
-        color: #94a3b8;
-      }
-
-      .detail-item span {
-        display: block;
-        margin-top: 10px;
-        font-size: 1rem;
-        color: var(--text);
-      }
-
-      .band {
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        background: rgba(248, 250, 252, 0.82);
-      }
-
-      .two-col,
-      .feature-layout {
-        display: grid;
-        gap: 40px;
-      }
-
-      .two-col {
-        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-        padding: 72px 0;
-        align-items: start;
-      }
-
-      .feature-layout {
-        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      }
-
-      .section {
-        padding: 112px 0;
-      }
-
-      .section-alt {
-        background: rgba(248, 250, 252, 0.94);
-      }
-
-      .section-copy {
-        max-width: 42rem;
-        margin-top: 18px;
-        color: var(--muted);
-        line-height: 1.8;
-      }
-
-      .grid-3,
-      .grid-2,
-      .grid-steps {
-        display: grid;
-        gap: 22px;
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        margin-top: 42px;
-      }
-
-      .grid-2 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .grid-steps {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .card p,
-      .dark-card p {
-        margin-top: 16px;
-        color: var(--muted);
-        line-height: 1.75;
-      }
-
-      .simple-card {
-        border: 1px solid var(--line);
-        background: #fff;
-        border-radius: var(--radius-md);
-        padding: 26px;
-        box-shadow: 0 14px 34px -32px rgba(15, 23, 42, 0.46);
-      }
-
-      .simple-card h3 {
-        font-size: 1.12rem;
-      }
-
-      .simple-card p {
-        margin-top: 12px;
-        color: var(--muted);
-        font-size: 0.98rem;
-        line-height: 1.7;
-      }
-
-      .dark-section {
-        background: #020617;
-        color: #fff;
-      }
-
-      .dark-section .section-label {
-        color: #6ee7b7;
-      }
-
-      .dark-section .section-copy {
-        color: #cbd5e1;
-      }
-
-      .dark-card {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: var(--radius-lg);
-        padding: 28px;
-      }
-
-      .dark-card p {
-        color: #cbd5e1;
-      }
-
-      .step-number {
-        color: #6ee7b7;
-        font-size: 0.9rem;
-        font-weight: 700;
-      }
-
-      .insights-head {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 24px;
-      }
-
-      .inline-link {
-        color: #475569;
-        text-decoration: underline;
-        text-decoration-color: #cbd5e1;
-        text-underline-offset: 4px;
-      }
-
-      .inline-link:hover {
-        color: var(--text);
-      }
-
-      .tag {
-        color: var(--accent);
-        font-size: 0.92rem;
-      }
-
-      .contact-box a {
-        color: var(--text);
-      }
-
-      .contact-panel {
-        border-radius: var(--radius-xl);
-        padding: 34px;
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-        margin-top: 38px;
-      }
-
-      .contact-box {
-        border: 1px solid var(--line);
-        background: var(--soft);
-        border-radius: 24px;
-        padding: 24px;
-      }
-
-      .contact-box small {
-        display: block;
-        color: #64748b;
-        font-size: 0.92rem;
-      }
-
-      .contact-box strong {
-        display: block;
-        margin-top: 10px;
-        font-size: 1.08rem;
-        line-height: 1.55;
-      }
-
-      .contact-actions {
-        margin-top: 32px;
-      }
-
-      .site-footer {
-        border-top: 1px solid var(--line);
-        background: #fff;
-      }
-
-      .closing-cta {
-        background: #020617;
-        color: #fff;
-      }
-
-      .closing-cta .wrap {
-        padding: 34px 0;
-        text-align: center;
-      }
-
-      .closing-cta p {
-        color: #cbd5e1;
-        font-size: 1.02rem;
-        line-height: 1.7;
-        margin-top: 10px;
-      }
-
-      .footer-row {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 28px;
-        padding: 30px 0 40px;
-        color: #64748b;
-        font-size: 0.94rem;
-      }
-
-      .footer-copy {
-        max-width: 46rem;
-      }
-
-      .footer-copy p + p {
-        margin-top: 10px;
-        line-height: 1.7;
-      }
-
-      @media (max-width: 1024px) {
-        .hero-grid,
-        .two-col,
-        .feature-layout {
-          grid-template-columns: 1fr;
-        }
-
-        .grid-3 {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 820px) {
-        .nav {
-          display: none;
-        }
-
-        .grid-2,
-        .grid-3,
-        .grid-steps,
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .insights-head,
-        .footer-row {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .section {
-          padding: 88px 0;
-        }
-
-        .hero {
-          padding: 38px 0 64px;
-        }
-
-        .container {
-          width: min(calc(100% - 32px), var(--content));
-        }
-      }
+        --ink:      #0a0a0a;
+        --ink-2:    #171717;
+        --ink-3:    #262626;
+        --grey-1:   #525252;
+        --grey-2:   #737373;
+        --grey-3:   #a3a3a3;
+        --line:     #e5e5e5;
+        --line-md:  #d4d4d4;
+        --bg:       #ffffff;
+        --bg-soft:  #fafafa;
+        --bg-tint:  #f5f5f5;
+        --accent:   #ea580c;
+        --accent-soft: #fff7ed;
+        --max:      1180px;
+        --sans:     'Geist', system-ui, -apple-system, sans-serif;
+        --mono:     'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+      }
+      *,*::before,*::after{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;
+        font-family:var(--sans);
+        font-size:16px;
+        line-height:1.5;
+        color:var(--ink);
+        background:var(--bg);
+        -webkit-font-smoothing:antialiased;
+        text-rendering:optimizeLegibility;
+      }
+      a{color:inherit;text-decoration:none}
+      p{margin:0}
+      h1,h2,h3,h4{margin:0;font-family:var(--sans);font-weight:500;letter-spacing:-0.025em}
+      .wrap{width:min(calc(100% - 48px),var(--max));margin:0 auto}
+      .mono{font-family:var(--mono);font-variant-ligatures:none}
+
+      /* HEADER */
+      .site-header{
+        position:sticky;top:0;z-index:50;
+        background:rgba(255,255,255,0.85);
+        backdrop-filter:blur(12px);
+        -webkit-backdrop-filter:blur(12px);
+        border-bottom:1px solid var(--line);
+      }
+      .header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+      .brand{
+        display:inline-flex;align-items:center;gap:8px;
+        font-weight:600;font-size:1.05rem;letter-spacing:-0.02em;color:var(--ink);
+      }
+      .brand-dot{
+        width:18px;height:18px;border-radius:5px;
+        background:var(--ink);
+        display:inline-block;
+        position:relative;
+      }
+      .brand-dot::after{
+        content:'';position:absolute;
+        inset:5px;
+        background:var(--bg);
+        border-radius:2px;
+      }
+      .site-nav{display:flex;gap:28px;font-size:0.875rem;color:var(--grey-1);font-weight:450}
+      .site-nav a:hover{color:var(--ink)}
+
+      /* BUTTONS */
+      .btn{
+        display:inline-flex;align-items:center;gap:6px;
+        border-radius:8px;padding:9px 16px;
+        font-size:0.875rem;font-weight:500;
+        transition:background 0.15s,border-color 0.15s,color 0.15s;
+        white-space:nowrap;
+      }
+      .btn-dark{background:var(--ink);color:#fff;border:1px solid var(--ink)}
+      .btn-dark:hover{background:var(--ink-2);border-color:var(--ink-2)}
+      .btn-outline{border:1px solid var(--line-md);background:var(--bg);color:var(--ink)}
+      .btn-outline:hover{background:var(--bg-tint)}
+      .btn-ghost{color:var(--grey-1);padding:9px 4px}
+      .btn-ghost:hover{color:var(--ink)}
+      .btn-arrow::after{content:'→';display:inline-block;transition:transform 0.15s;margin-left:2px}
+      .btn-arrow:hover::after{transform:translateX(2px)}
+
+      /* HERO */
+      .hero{
+        position:relative;
+        padding:88px 0 96px;
+        border-bottom:1px solid var(--line);
+        overflow:hidden;
+      }
+      .hero::before{
+        content:'';position:absolute;inset:0;
+        background-image:
+          linear-gradient(to right,var(--line) 1px,transparent 1px),
+          linear-gradient(to bottom,var(--line) 1px,transparent 1px);
+        background-size:64px 64px;
+        background-position:center top;
+        mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 80%);
+        -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 80%);
+        opacity:0.6;
+        pointer-events:none;
+      }
+      .hero-inner{position:relative;z-index:1}
+      .hero-eyebrow{
+        display:inline-flex;align-items:center;gap:8px;
+        font-family:var(--mono);font-size:0.75rem;
+        color:var(--grey-1);
+        padding:6px 12px;
+        background:var(--bg);
+        border:1px solid var(--line-md);
+        border-radius:999px;
+        margin-bottom:32px;
+      }
+      .hero-eyebrow .dot{
+        width:6px;height:6px;border-radius:50%;
+        background:var(--accent);
+        box-shadow:0 0 0 3px rgba(234,88,12,0.18);
+      }
+      .hero h1{
+        font-size:clamp(2.5rem,5.5vw,4.5rem);
+        line-height:1.02;
+        letter-spacing:-0.035em;
+        font-weight:500;
+        max-width:18ch;
+        color:var(--ink);
+      }
+      .hero h1 .accent{color:var(--grey-3)}
+      .hero-lead{
+        margin-top:24px;
+        font-size:1.125rem;
+        line-height:1.6;
+        color:var(--grey-1);
+        max-width:38rem;
+      }
+      .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+      .hero-meta{
+        display:flex;flex-wrap:wrap;gap:24px 32px;
+        margin-top:48px;padding-top:32px;
+        border-top:1px solid var(--line);
+        font-family:var(--mono);font-size:0.78rem;
+        color:var(--grey-2);
+      }
+      .hero-meta-item{display:flex;align-items:center;gap:8px}
+      .hero-meta-item::before{content:'';width:6px;height:6px;background:var(--ink);border-radius:1px}
+
+      /* SECTION */
+      .section{padding:96px 0;border-bottom:1px solid var(--line)}
+      .section-soft{background:var(--bg-soft)}
+      .section-dark{background:var(--ink);color:#fff;border-bottom:0}
+
+      .s-label{
+        font-family:var(--mono);
+        font-size:0.75rem;
+        color:var(--grey-2);
+        margin-bottom:20px;
+        display:inline-block;
+      }
+      .s-label::before{content:'// '}
+
+      .section-dark .s-label{color:var(--grey-3)}
+
+      .s-title{
+        font-size:clamp(1.875rem,3.2vw,2.5rem);
+        line-height:1.1;
+        letter-spacing:-0.03em;
+        font-weight:500;
+        max-width:24ch;
+      }
+      .s-body{
+        margin-top:20px;
+        font-size:1rem;
+        line-height:1.65;
+        color:var(--grey-1);
+        max-width:36rem;
+      }
+      .section-dark .s-body{color:var(--grey-3)}
+
+      /* TWO-COL & WHY LAYOUT */
+      .two-col{
+        display:grid;
+        grid-template-columns:0.85fr 1.15fr;
+        gap:64px;
+        align-items:start;
+      }
+
+      /* PROBLEM */
+      .problem{
+        background:var(--bg-soft);
+        border-bottom:1px solid var(--line);
+        padding:72px 0;
+      }
+      .problem-grid{
+        display:grid;
+        grid-template-columns:0.85fr 1.15fr;
+        gap:56px;
+        align-items:center;
+      }
+      .problem h2{
+        font-size:clamp(1.75rem,2.8vw,2.25rem);
+        line-height:1.15;
+        letter-spacing:-0.025em;
+        font-weight:500;
+      }
+      .problem-body{
+        font-size:1.0625rem;
+        line-height:1.65;
+        color:var(--grey-1);
+      }
+
+      /* CARDS — STRUCTURED, NUMBERED */
+      .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+      .grid-3 > * {
+        padding:32px;
+        border-right:1px solid var(--line);
+        position:relative;
+      }
+      .grid-3 > *:last-child{border-right:0}
+
+      .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg)}
+      .grid-2 > *{
+        padding:32px;
+        border-right:1px solid var(--line);
+        border-bottom:1px solid var(--line);
+      }
+      .grid-2 > *:nth-child(2n){border-right:0}
+      .grid-2 > *:nth-last-child(-n+2){border-bottom:0}
+
+      .cell-num{
+        font-family:var(--mono);
+        font-size:0.72rem;
+        color:var(--grey-2);
+        margin-bottom:18px;
+        display:block;
+      }
+      .cell h3{
+        font-size:1.0625rem;
+        font-weight:500;
+        letter-spacing:-0.015em;
+        color:var(--ink);
+      }
+      .cell p{
+        margin-top:10px;
+        font-size:0.9375rem;
+        line-height:1.6;
+        color:var(--grey-1);
+      }
+
+      /* DARK CELLS */
+      .section-dark .grid-2,
+      .section-dark .grid-3{
+        background:transparent;
+        border-color:rgba(255,255,255,0.1);
+      }
+      .section-dark .grid-2 > *,
+      .section-dark .grid-3 > *{
+        border-color:rgba(255,255,255,0.1);
+      }
+      .section-dark .cell-num{color:var(--grey-2)}
+      .section-dark .cell h3{color:#fff}
+      .section-dark .cell p{color:var(--grey-3)}
+
+      /* WHY LAYOUT — uses two-col */
+      .why-layout{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:start}
+
+      /* DELIVERY ECO CARD */
+      .eco-card{
+        margin-top:28px;
+        padding:24px;
+        background:rgba(234,88,12,0.06);
+        border:1px solid rgba(234,88,12,0.22);
+        border-radius:12px;
+      }
+      .eco-card h4{
+        font-family:var(--mono);
+        font-size:0.72rem;
+        font-weight:500;
+        color:var(--accent);
+        margin-bottom:10px;
+        letter-spacing:0.02em;
+      }
+      .eco-card p{
+        font-size:0.9375rem;
+        line-height:1.65;
+        color:var(--grey-3);
+      }
+
+      /* TECH STRIP */
+      .tech-strip{
+        margin-top:48px;
+        padding:24px 28px;
+        background:var(--bg);
+        border:1px solid var(--line);
+        border-radius:12px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        gap:16px;
+      }
+      .tech-label{
+        font-family:var(--mono);
+        font-size:0.75rem;
+        color:var(--grey-2);
+      }
+      .tech-pills{display:flex;flex-wrap:wrap;gap:6px}
+      .tech-pill{
+        font-family:var(--mono);
+        font-size:0.78rem;
+        color:var(--grey-1);
+        background:var(--bg-tint);
+        border:1px solid var(--line);
+        padding:5px 10px;
+        border-radius:6px;
+      }
+
+      /* CONTACT */
+      .contact-panel{
+        border:1px solid var(--line-md);
+        border-radius:16px;
+        padding:48px;
+        background:var(--bg);
+        max-width:960px;
+        margin:0 auto;
+      }
+      .contact-grid{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:0;
+        margin-top:36px;
+        border:1px solid var(--line);
+        border-radius:10px;
+        overflow:hidden;
+      }
+      .contact-grid > *{
+        padding:22px;
+        border-right:1px solid var(--line);
+      }
+      .contact-grid > *:last-child{border-right:0}
+      .contact-box small{
+        display:block;
+        font-family:var(--mono);
+        font-size:0.7rem;
+        color:var(--grey-2);
+        text-transform:uppercase;
+        letter-spacing:0.05em;
+      }
+      .contact-box strong{
+        display:block;
+        margin-top:10px;
+        font-size:0.9375rem;
+        font-weight:500;
+        line-height:1.5;
+        color:var(--ink);
+      }
+      .contact-box .calendly-link{
+        margin-top:14px;
+        display:inline-flex;
+        font-family:var(--mono);
+        font-size:0.78rem;
+        color:var(--ink);
+        border-bottom:1px solid var(--line-md);
+        padding-bottom:2px;
+      }
+      .contact-box .calendly-link:hover{border-color:var(--ink)}
+      .contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+
+      /* CLOSING */
+      .closing{
+        background:var(--ink);
+        color:#fff;
+        padding:96px 0;
+        text-align:center;
+        position:relative;
+        overflow:hidden;
+      }
+      .closing::before{
+        content:'';
+        position:absolute;inset:0;
+        background-image:
+          linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),
+          linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);
+        background-size:64px 64px;
+        background-position:center;
+        mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 30%,transparent 80%);
+        -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 30%,transparent 80%);
+      }
+      .closing-inner{position:relative;z-index:1}
+      .closing h2{
+        font-size:clamp(2rem,3.6vw,2.75rem);
+        line-height:1.1;
+        letter-spacing:-0.03em;
+        font-weight:500;
+        max-width:22ch;
+        margin:0 auto;
+        color:#fff;
+      }
+      .closing p{
+        margin-top:18px;
+        font-size:1.0625rem;
+        color:var(--grey-3);
+      }
+      .closing-actions{margin-top:36px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+      .btn-on-dark-outline{
+        border:1px solid rgba(255,255,255,0.18);
+        background:transparent;color:#fff;
+      }
+      .btn-on-dark-outline:hover{background:rgba(255,255,255,0.06)}
+      .btn-on-dark-primary{
+        background:#fff;color:var(--ink);
+      }
+      .btn-on-dark-primary:hover{background:var(--bg-tint)}
+
+      /* FOOTER */
+      .site-footer{
+        background:var(--bg);
+        padding:36px 0 40px;
+      }
+      .footer-inner{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:28px;
+        flex-wrap:wrap;
+      }
+      .footer-copy{
+        font-family:var(--mono);
+        font-size:0.78rem;
+        color:var(--grey-2);
+        line-height:1.6;
+        max-width:42rem;
+      }
+      .footer-links{
+        display:flex;gap:22px;
+        font-size:0.875rem;
+        color:var(--grey-1);
+      }
+      .footer-links a:hover{color:var(--ink)}
+
+      /* RESPONSIVE */
+      @media(max-width:1020px){
+        .two-col,.why-layout,.problem-grid{grid-template-columns:1fr;gap:32px}
+        .grid-3{grid-template-columns:1fr;}
+        .grid-3 > *{border-right:0;border-bottom:1px solid var(--line)}
+        .grid-3 > *:last-child{border-bottom:0}
+        .hero h1{max-width:none}
+      }
+      @media(max-width:700px){
+        .site-nav{display:none}
+        .grid-2{grid-template-columns:1fr}
+        .grid-2 > *{border-right:0;border-bottom:1px solid var(--line)}
+        .grid-2 > *:last-child{border-bottom:0}
+        .section{padding:72px 0}
+        .hero{padding:64px 0 72px}
+        .wrap{width:calc(100% - 32px)}
+        .contact-panel{padding:32px 24px}
+        .contact-grid{grid-template-columns:1fr}
+        .contact-grid > *{border-right:0;border-bottom:1px solid var(--line)}
+        .contact-grid > *:last-child{border-bottom:0}
+      }
+
+      /* FADE IN */
+      @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+      .hero-inner > *{animation:fadeUp 0.5s ease both}
+      .hero-eyebrow{animation-delay:0.05s}
+      .hero h1{animation-delay:0.12s}
+      .hero-lead{animation-delay:0.2s}
+      .hero-actions{animation-delay:0.26s}
+      .hero-meta{animation-delay:0.32s}
     </style>
   </head>
   <body>
+
     <header class="site-header">
-      <div class="container header-row">
-        <a href="#home" class="brand">Agentek</a>
-        <nav class="nav" aria-label="Primary navigation">
+      <div class="wrap header-inner">
+        <a href="#home" class="brand">
+          <span class="brand-dot"></span>
+          Agentek
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
           <a href="#home">Home</a>
           <a href="#what-we-do">What We Do</a>
           <a href="#use-cases">Use Cases</a>
           <a href="#how-we-deliver">How We Deliver</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a href="#contact" class="button button-primary">Book a call</a>
+        <a href="https://calendly.com/agentek" class="btn btn-dark">Book a call</a>
       </div>
     </header>
 
     <main>
-      <section id="home" class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="eyebrow">Enterprise AI architecture and engineering</div>
-            <h1>Enterprise AI that actually gets into production</h1>
-            <p class="lead">
-              Agentek helps enterprises design, govern, and deploy AI workflows
-              across real systems, real controls, and real operational
-              constraints.
-            </p>
-            <div class="hero-actions">
-              <a href="#contact" class="button button-primary">Book a strategy call</a>
-              <a href="#how-we-deliver" class="button button-secondary">See how we deliver</a>
-            </div>
-            <div class="pill-row">
-              <span class="pill">Architecture-led</span>
-              <span class="pill">Governed by design</span>
-              <span class="pill">Built for real enterprise workflows</span>
-            </div>
-          </div>
 
-          <aside class="panel" aria-label="Workflow overview">
-            <div class="hero-panel-title">From isolated demos to live workflows</div>
-            <div class="detail-list">
-              <div class="detail-item">
-                <strong>Workflow</strong>
-                <span>Document intake and triage</span>
-              </div>
-              <div class="detail-item">
-                <strong>Control layer</strong>
-                <span>Review thresholds, escalation, audit trail</span>
-              </div>
-              <div class="detail-item">
-                <strong>Systems</strong>
-                <span>CRM, case tools, email, knowledge sources</span>
-              </div>
-              <div class="detail-item">
-                <strong>Operating model</strong>
-                <span>Human-in-the-loop, monitoring, handover</span>
-              </div>
-            </div>
-          </aside>
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div class="wrap hero-inner">
+          <span class="hero-eyebrow">
+            <span class="dot"></span>
+            Enterprise AI architecture &amp; engineering
+          </span>
+          <h1>Enterprise AI that <span class="accent">actually</span> gets into production.</h1>
+          <p class="hero-lead">
+            Agentek designs, governs, and deploys AI workflows across real systems, real controls, and real operational constraints — built for regulated enterprises.
+          </p>
+          <div class="hero-actions">
+            <a href="https://calendly.com/agentek" class="btn btn-dark">Book a strategy call</a>
+            <a href="#how-we-deliver" class="btn btn-outline btn-arrow">See how we deliver</a>
+          </div>
+          <div class="hero-meta">
+            <span class="hero-meta-item">Architecture-led</span>
+            <span class="hero-meta-item">Governed by design</span>
+            <span class="hero-meta-item">Built for production</span>
+          </div>
         </div>
       </section>
 
-      <section class="band">
-        <div class="container two-col">
+      <!-- PROBLEM -->
+      <section class="problem">
+        <div class="wrap problem-grid">
           <div>
-            <p class="section-label">The problem</p>
-            <h2>Most AI initiatives fail between pilot and production</h2>
+            <span class="s-label">The problem</span>
+            <h2>Most AI initiatives fail between pilot and production.</h2>
           </div>
-          <p class="lead" style="margin-top: 0;">
-            The issue is rarely the model. It is the workflow, the controls,
-            the data, the integrations, and the operating model around it.
-            Agentek helps enterprises solve those real-world constraints so AI
-            can move beyond slideware and isolated demos.
+          <p class="problem-body">
+            The issue is rarely the model. It is the workflow, the controls, the data, the integrations, and the operating model around it. Agentek helps enterprises solve those real-world constraints so AI can move beyond slideware and isolated demos.
           </p>
         </div>
       </section>
 
+      <!-- WHAT WE DO -->
       <section id="what-we-do" class="section">
-        <div class="container">
-          <p class="section-label">What we do</p>
-          <h2 style="max-width: 18ch;">
-            Strategy, control design, and implementation shaped for enterprise reality
-          </h2>
+        <div class="wrap">
+          <span class="s-label">What we do</span>
+          <h2 class="s-title">Strategy, control design, and implementation shaped for enterprise reality.</h2>
           <div class="grid-3">
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">01 / Workflow</span>
               <h3>AI workflow design</h3>
-              <p>
-                Identify where AI should and should not sit in the process,
-                based on risk, value, and operational reality.
-              </p>
+              <p>Identify where AI should and should not sit in the process, based on risk, value, and operational reality.</p>
             </article>
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">02 / Controls</span>
               <h3>Architecture and governance</h3>
-              <p>
-                Design the control layer around AI with human review,
-                escalation paths, observability, and clear decision
-                boundaries.
-              </p>
+              <p>Design the control layer around AI with human review, escalation paths, observability, and clear decision boundaries.</p>
             </article>
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">03 / Delivery</span>
               <h3>Implementation and scale</h3>
-              <p>
-                Move from concept to live deployment across enterprise systems,
-                with Agentek-led delivery and specialist implementation support
-                where needed.
-              </p>
+              <p>Move from concept to live deployment across enterprise systems, with Agentek-led delivery and specialist implementation support where needed.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="use-cases" class="section section-alt">
-        <div class="container">
-          <p class="section-label">Use cases</p>
-          <h2 style="max-width: 20ch;">
-            Designed for workflow-heavy, regulated, and operationally complex environments
-          </h2>
+      <!-- USE CASES -->
+      <section id="use-cases" class="section section-soft">
+        <div class="wrap">
+          <span class="s-label">Use cases</span>
+          <h2 class="s-title">Designed for workflow-heavy, regulated, operationally complex environments.</h2>
           <div class="grid-3">
-            <article class="simple-card">
+            <article class="cell">
+              <span class="cell-num">→ Operations</span>
               <h3>Document intake and triage</h3>
               <p>Automated classification, extraction, and routing of inbound documents with human review thresholds for exceptions.</p>
             </article>
-            <article class="simple-card">
+            <article class="cell">
+              <span class="cell-num">→ Compliance</span>
               <h3>Client onboarding and KYC</h3>
               <p>Agent-led onboarding workflows with compliance-bounded controls and full audit trail for regulated industries.</p>
             </article>
-            <article class="simple-card">
+            <article class="cell">
+              <span class="cell-num">→ Servicing</span>
               <h3>Claims and servicing workflows</h3>
               <p>Multi-step claims processing with deterministic SOPs, escalation paths, and integration into case management systems.</p>
             </article>
-            <article class="simple-card">
+            <article class="cell">
+              <span class="cell-num">→ Knowledge</span>
               <h3>Knowledge-grounded operations support</h3>
               <p>Retrieval-grounded agents that answer operational queries from your own knowledge base, with confidence thresholds and citations.</p>
             </article>
-            <article class="simple-card">
+            <article class="cell">
+              <span class="cell-num">→ Review</span>
               <h3>Compliance and review workflows</h3>
               <p>AI-assisted review with human-in-the-loop sign-off, designed for environments where audit and explainability are non-negotiable.</p>
             </article>
-            <article class="simple-card">
+            <article class="cell">
+              <span class="cell-num">→ Assurance</span>
               <h3>Workflow assurance and escalation</h3>
               <p>Monitoring, exception handling, and escalation logic built in from day one — not bolted on later.</p>
             </article>
@@ -701,245 +610,170 @@
         </div>
       </section>
 
+      <!-- WHY AGENTEK -->
       <section class="section">
-        <div class="container feature-layout">
+        <div class="wrap why-layout">
           <div>
-            <p class="section-label">Why Agentek</p>
-            <h2 style="max-width: 15ch;">Built for enterprise reality, not AI theatre</h2>
-            <p class="section-copy">
-              Agentek is strongest where workflows, controls, systems, and
-              operating model all matter at once. That is where most AI
-              projects slow down, and where structured design makes the
-              difference.
-            </p>
+            <span class="s-label">Why Agentek</span>
+            <h2 class="s-title">Built for enterprise reality, not AI theatre.</h2>
+            <p class="s-body">Agentek is strongest where workflows, controls, systems, and operating model all matter at once. That is where most AI projects slow down, and where structured design makes the difference.</p>
           </div>
           <div class="grid-2">
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">// Principle</span>
               <h3>Architecture first</h3>
-              <p>
-                We start with the workflow, controls, data, and operating
-                model. Not a random AI demo.
-              </p>
+              <p>We start with the workflow, controls, data, and operating model. Not a random AI demo.</p>
             </article>
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">// Principle</span>
               <h3>Governed by design</h3>
-              <p>
-                Human-in-the-loop review, confidence thresholds, auditability,
-                and escalation are designed in from day one.
-              </p>
+              <p>Human-in-the-loop review, confidence thresholds, auditability, and escalation are designed in from day one.</p>
             </article>
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">// Principle</span>
               <h3>Built for enterprise reality</h3>
-              <p>
-                AI has to work with existing systems, fragmented data,
-                compliance constraints, and real operating teams.
-              </p>
+              <p>AI has to work with existing systems, fragmented data, compliance constraints, and real operating teams.</p>
             </article>
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">// Principle</span>
               <h3>Outcome-led delivery</h3>
-              <p>
-                We focus on production use, measurable impact, and operating
-                models that can be sustained after launch.
-              </p>
+              <p>We focus on production use, measurable impact, and operating models that can be sustained after launch.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="how-we-deliver" class="section dark-section">
-        <div class="container feature-layout">
+      <!-- HOW WE DELIVER -->
+      <section id="how-we-deliver" class="section section-dark">
+        <div class="wrap two-col">
           <div>
-            <p class="section-label">How we deliver</p>
-            <h2 style="max-width: 16ch;">
-              One accountable front door from discovery to deployment
-            </h2>
-            <p class="section-copy">
-              Agentek leads the architecture, governance, and client outcome.
-              Where it helps execution, we bring in selected specialist
-              implementation partners under an Agentek-led delivery model.
-            </p>
-            <div class="dark-card" style="margin-top: 28px;">
-              <h3 style="color: #6ee7b7; font-size: 1rem;">Delivery ecosystem</h3>
-              <p>
-                Agentek leads architecture, governance, and outcome.
-                Implementation is delivered through selected specialist
-                engineering partners under Agentek's accountability. The client
-                relationship and architectural control stay with Agentek.
-              </p>
+            <span class="s-label">How we deliver</span>
+            <h2 class="s-title">One accountable front door from discovery to deployment.</h2>
+            <p class="s-body">Agentek leads the architecture, governance, and client outcome. Where it helps execution, we bring in selected specialist implementation partners under an Agentek-led delivery model.</p>
+            <div class="eco-card">
+              <h4>// Delivery ecosystem</h4>
+              <p>Agentek leads architecture, governance, and outcome. Implementation is delivered through selected specialist engineering partners under Agentek's accountability. The client relationship and architectural control stay with Agentek.</p>
             </div>
           </div>
-          <div class="grid-steps">
-            <article class="dark-card">
-              <div class="step-number">01</div>
-              <h3 style="margin-top: 12px;">Discover</h3>
-              <p>
-                Prioritise the right workflow and define the business problem
-                clearly.
-              </p>
+          <div class="grid-2">
+            <article class="cell">
+              <span class="cell-num">01 / Discover</span>
+              <h3>Prioritise the workflow</h3>
+              <p>Define the business problem clearly and identify where AI will create measurable operational impact.</p>
             </article>
-            <article class="dark-card">
-              <div class="step-number">02</div>
-              <h3 style="margin-top: 12px;">Design</h3>
-              <p>
-                Map controls, data, integration points, and human decision
-                boundaries.
-              </p>
+            <article class="cell">
+              <span class="cell-num">02 / Design</span>
+              <h3>Architect the controls</h3>
+              <p>Map controls, data, integration points, and human decision boundaries before any code is written.</p>
             </article>
-            <article class="dark-card">
-              <div class="step-number">03</div>
-              <h3 style="margin-top: 12px;">Deploy</h3>
-              <p>
-                Implement into real systems with Agentek leading delivery and
-                specialist engineering support where useful.
-              </p>
+            <article class="cell">
+              <span class="cell-num">03 / Deploy</span>
+              <h3>Ship into real systems</h3>
+              <p>Implement into production with Agentek leading delivery and specialist engineering support where useful.</p>
             </article>
-            <article class="dark-card">
-              <div class="step-number">04</div>
-              <h3 style="margin-top: 12px;">Operate</h3>
-              <p>
-                Measure, refine, govern, and scale once the workflow is live.
-              </p>
+            <article class="cell">
+              <span class="cell-num">04 / Operate</span>
+              <h3>Measure and scale</h3>
+              <p>Refine, govern, and scale once the workflow is live, with monitoring and operating model in place.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="container">
-          <p class="section-label">Proof of fit</p>
-          <h2 style="max-width: 18ch;">
-            Credibility for complex operational environments
-          </h2>
+      <!-- PROOF OF FIT -->
+      <section class="section section-soft">
+        <div class="wrap">
+          <span class="s-label">Proof of fit</span>
+          <h2 class="s-title">Credibility for complex operational environments.</h2>
           <div class="grid-3">
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">// Regulated</span>
               <h3>Regulated industry experience</h3>
-              <p>
-                Delivery experience in environments where audit, compliance, and
-                operational resilience are non-negotiable. Legal, financial
-                services, and other regulated workflows.
-              </p>
+              <p>Delivery experience in environments where audit, compliance, and operational resilience are non-negotiable. Legal, financial services, and other regulated workflows.</p>
             </article>
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">// Architecture</span>
               <h3>Production-grade architecture</h3>
-              <p>
-                Built on LangChain, LangGraph, vector stores, and major cloud
-                platforms. Deployable into client-controlled environments for
-                GDPR and data residency compliance.
-              </p>
+              <p>Built on LangChain, LangGraph, vector stores, and major cloud platforms. Deployable into client-controlled environments for GDPR and data residency compliance.</p>
             </article>
-            <article class="card">
+            <article class="cell">
+              <span class="cell-num">// Governance</span>
               <h3>Governed by design</h3>
-              <p>
-                Human-in-the-loop, confidence thresholds, escalation paths, and
-                audit trails built into every workflow from the architecture
-                stage. Not retrofitted afterwards.
-              </p>
+              <p>Human-in-the-loop, confidence thresholds, escalation paths, and audit trails built into every workflow from the architecture stage. Not retrofitted afterwards.</p>
             </article>
           </div>
-        </div>
-      </section>
 
-      <section class="section section-alt" style="padding-top: 0;">
-        <div class="container">
-          <div
-            style="
-              border-top: 1px solid var(--line);
-              padding-top: 34px;
-              display: flex;
-              flex-wrap: wrap;
-              gap: 12px 18px;
-              align-items: center;
-              justify-content: space-between;
-            "
-          >
-            <div style="font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; color: #64748b;">
-              Technology foundation
-            </div>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 12px;
-                color: #475569;
-                font-size: 0.92rem;
-              "
-            >
-              <span class="pill">LangChain</span>
-              <span class="pill">LangGraph</span>
-              <span class="pill">AWS</span>
-              <span class="pill">Azure</span>
-              <span class="pill">Google Cloud</span>
+          <div class="tech-strip">
+            <span class="tech-label">// Technology foundation</span>
+            <div class="tech-pills">
+              <span class="tech-pill">LangChain</span>
+              <span class="tech-pill">LangGraph</span>
+              <span class="tech-pill">AWS</span>
+              <span class="tech-pill">Azure</span>
+              <span class="tech-pill">Google Cloud</span>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- CONTACT -->
       <section id="contact" class="section">
-        <div class="container" style="max-width: 1020px;">
-          <div class="panel contact-panel">
-            <p class="section-label">Contact</p>
-            <h2 style="max-width: 14ch;">Start with the workflow, not the hype</h2>
-            <p class="section-copy" style="max-width: 42rem;">
-              If you are trying to move AI from idea to operation, Agentek can
-              help shape the use case, define the control model, and design the
-              path to production.
-            </p>
+        <div class="wrap">
+          <div class="contact-panel">
+            <span class="s-label">Contact</span>
+            <h2 class="s-title">Start with the workflow, not the hype.</h2>
+            <p class="s-body">If you are trying to move AI from idea to operation, Agentek can help shape the use case, define the control model, and design the path to production.</p>
             <div class="contact-grid">
               <div class="contact-box">
-                <small>Email</small>
+                <small>// Email</small>
                 <strong>hello@agentek.co.uk</strong>
               </div>
               <div class="contact-box">
-                <small>Book a call</small>
-                <strong>Book a 30-minute intro call</strong>
-                <div style="margin-top: 14px;">
-                  <a href="https://calendly.com/agentek" class="button button-secondary">Open booking link</a>
-                </div>
+                <small>// Book a call</small>
+                <strong>30-minute intro call</strong>
+                <a href="https://calendly.com/agentek" class="calendly-link">Open booking →</a>
               </div>
               <div class="contact-box">
-                <small>Best for</small>
-                <strong>
-                  Enterprise AI strategy, workflow design, and implementation
-                  planning
-                </strong>
+                <small>// Best for</small>
+                <strong>Enterprise AI strategy, workflow design, and implementation planning</strong>
               </div>
             </div>
             <div class="contact-actions">
-              <a href="mailto:hello@agentek.co.uk" class="button button-primary">Email Agentek</a>
-              <a href="#home" class="button button-secondary">Back to top</a>
+              <a href="mailto:hello@agentek.co.uk" class="btn btn-dark">Email Agentek</a>
+              <a href="#home" class="btn btn-outline">Back to top</a>
             </div>
           </div>
         </div>
       </section>
+
     </main>
 
-    <section class="closing-cta">
-      <div class="container wrap">
-        <h2 style="max-width: none; font-size: clamp(1.7rem, 3vw, 2.6rem);">
-          Talk to us before you scope your next AI project.
-        </h2>
+    <!-- CLOSING CTA -->
+    <section class="closing">
+      <div class="wrap closing-inner">
+        <h2>Talk to us before you scope your next AI project.</h2>
         <p>We'll help you decide what should and shouldn't be built.</p>
-        <div style="margin-top: 22px;">
-          <a href="https://calendly.com/agentek" class="button button-primary">Book a call</a>
+        <div class="closing-actions">
+          <a href="https://calendly.com/agentek" class="btn btn-on-dark-primary">Book a call</a>
+          <a href="mailto:hello@agentek.co.uk" class="btn btn-on-dark-outline">Or email us</a>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
-      <div class="container footer-row">
+      <div class="wrap footer-inner">
         <div class="footer-copy">
-          <p>© <span id="year"></span> Agentek Labs Limited. Registered in England &amp; Wales. Company No. 17041966.</p>
+          &copy; <span id="yr"></span> Agentek Labs Limited. Registered in England &amp; Wales. Company No. 17041966.
         </div>
-        <div class="footer-links">
+        <nav class="footer-links" aria-label="Footer navigation">
           <a href="#what-we-do">What We Do</a>
           <a href="#how-we-deliver">How We Deliver</a>
           <a href="#contact">Contact</a>
-        </div>
+        </nav>
       </div>
     </footer>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
   </body>
 </html>
