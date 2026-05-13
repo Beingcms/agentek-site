@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Book a strategy call with Agentek. Share your name, email, phone number, and company to start the conversation."
+    />
+    <title>Book a Strategy Call | Agentek</title>
+    <style>
+      :root {
+        --ink: #0a0a0a;
+        --ink-soft: #525252;
+        --line: #e5e5e5;
+        --panel: #ffffff;
+        --bg: #f3f5f7;
+        --accent: #ea580c;
+        --accent-dark: #c2410c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background:
+          radial-gradient(circle at top left, rgba(234, 88, 12, 0.08), transparent 26%),
+          linear-gradient(180deg, #f7f8fa 0%, #eef2f4 100%);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(calc(100% - 32px), 960px);
+        margin: 0 auto;
+        padding: 48px 0 64px;
+      }
+
+      .brand {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        margin-top: 28px;
+        align-items: stretch;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 32px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 16px;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.1rem, 4vw, 3.2rem);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+      }
+
+      .lead {
+        margin-top: 18px;
+        color: var(--ink-soft);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        max-width: 34rem;
+      }
+
+      .points {
+        margin-top: 28px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .points li {
+        padding: 14px 0;
+        border-top: 1px solid var(--line);
+        font-size: 0.98rem;
+        line-height: 1.6;
+        color: var(--ink-soft);
+      }
+
+      .points li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .points strong {
+        display: block;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
+
+      .form-title {
+        font-size: 1.55rem;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      .form-copy {
+        margin-top: 12px;
+        color: var(--ink-soft);
+        font-size: 0.97rem;
+        line-height: 1.65;
+      }
+
+      form {
+        margin-top: 24px;
+      }
+
+      .field {
+        margin-bottom: 16px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid #d4d4d4;
+        border-radius: 10px;
+        padding: 14px 15px;
+        font: inherit;
+        color: var(--ink);
+        background: #ffffff;
+      }
+
+      input:focus {
+        outline: 2px solid rgba(234, 88, 12, 0.15);
+        border-color: var(--accent);
+      }
+
+      .submit {
+        width: 100%;
+        margin-top: 6px;
+        border: 0;
+        border-radius: 10px;
+        padding: 16px 18px;
+        font: inherit;
+        font-weight: 700;
+        color: #ffffff;
+        background: var(--ink);
+        cursor: pointer;
+      }
+
+      .submit:hover {
+        background: #171717;
+      }
+
+      .submit[disabled] {
+        opacity: 0.72;
+        cursor: wait;
+      }
+
+      .status {
+        min-height: 24px;
+        margin-top: 14px;
+        font-size: 0.88rem;
+        line-height: 1.6;
+        color: #525252;
+      }
+
+      .status.is-error {
+        color: #b42318;
+      }
+
+      .thanks[hidden],
+      .form-shell[hidden] {
+        display: none;
+      }
+
+      .thanks {
+        margin-top: 24px;
+      }
+
+      .thanks-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #f8fafb;
+        padding: 24px;
+      }
+
+      .thanks-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(15, 118, 110, 0.1);
+        color: #0f766e;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+
+      .thanks-card h3 {
+        margin: 16px 0 0;
+        font-size: 1.35rem;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      .thanks-card p {
+        margin-top: 12px;
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+
+      .thanks-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .secondary {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 14px 18px;
+        font: inherit;
+        font-weight: 700;
+        color: var(--ink);
+        background: #ffffff;
+        cursor: pointer;
+      }
+
+      .note {
+        margin-top: 14px;
+        font-size: 0.84rem;
+        line-height: 1.6;
+        color: #737373;
+      }
+
+      .footer {
+        margin-top: 20px;
+        color: #737373;
+        font-size: 0.84rem;
+        line-height: 1.6;
+      }
+
+      .footer a {
+        color: var(--accent-dark);
+      }
+
+      @media (max-width: 820px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .panel {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="brand">Agentek</div>
+      <section class="hero">
+        <div class="panel">
+          <div class="eyebrow">Strategy call</div>
+          <h1>Start with the workflow, not the hype.</h1>
+          <p class="lead">
+            Share a few details and Agentek will have the context needed for a useful first conversation about enterprise AI strategy, workflow design, and implementation planning.
+          </p>
+          <ul class="points">
+            <li>
+              <strong>Designed for a practical first call</strong>
+              Enough detail to frame the conversation without turning this into a long intake form.
+            </li>
+            <li>
+              <strong>Built around real delivery constraints</strong>
+              Useful when systems, controls, governance, and rollout planning all matter at once.
+            </li>
+            <li>
+              <strong>Best for</strong>
+              Enterprise AI strategy, workflow design, and implementation planning.
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <div class="eyebrow">Book a call</div>
+          <h2 class="form-title">Request a 30-minute intro call</h2>
+          <p class="form-copy">
+            Share your details and Agentek will receive the request directly by email.
+          </p>
+
+          <div class="form-shell" id="form-shell">
+            <form id="strategy-form">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" autocomplete="organization" />
+              </div>
+              <button class="submit" id="submit-button" type="submit">Send request</button>
+              <div class="status" id="form-status" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <div class="thanks" id="thanks-state" hidden>
+            <div class="thanks-card">
+              <div class="thanks-mark">✓</div>
+              <h3>Thanks. Your request has been sent.</h3>
+              <p>
+                Agentek has your details and will be in touch about a strategy call. If anything is urgent, email
+                <a href="mailto:hello@agentek.co.uk">hello@agentek.co.uk</a>.
+              </p>
+              <div class="thanks-actions">
+                <button class="secondary" id="send-another" type="button">Send another request</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="note">
+            Contact email: <a href="mailto:hello@agentek.co.uk">hello@agentek.co.uk</a>
+          </p>
+        </div>
+      </section>
+
+      <div class="footer">
+        &copy; 2026 Agentek Labs Limited. Registered in England &amp; Wales. Company No. 17041966.
+      </div>
+    </main>
+    <script>
+      const form = document.getElementById("strategy-form");
+      const status = document.getElementById("form-status");
+      const submitButton = document.getElementById("submit-button");
+      const formShell = document.getElementById("form-shell");
+      const thanksState = document.getElementById("thanks-state");
+      const sendAnother = document.getElementById("send-another");
+      const nameField = document.getElementById("name");
+
+      function showForm() {
+        formShell.hidden = false;
+        thanksState.hidden = true;
+      }
+
+      function showThanks() {
+        formShell.hidden = true;
+        thanksState.hidden = false;
+      }
+
+      sendAnother.addEventListener("click", () => {
+        form.reset();
+        status.textContent = "";
+        status.className = "status";
+        showForm();
+        window.setTimeout(() => nameField.focus(), 20);
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const payload = Object.fromEntries(new FormData(form).entries());
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+        status.textContent = "Sending your request...";
+        status.className = "status";
+
+        try {
+          const response = await fetch("/api/book-strategy-call", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(result.error || "Unable to send your request right now.");
+          }
+
+          form.reset();
+          status.textContent = "";
+          status.className = "status";
+          showThanks();
+        } catch (error) {
+          status.textContent = error.message || "Something went wrong. Please try again.";
+          status.className = "status is-error";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = "Send request";
+        }
+      });
+    </script>
+  </body>
+</html>
