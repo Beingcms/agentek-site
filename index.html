@@ -768,8 +768,8 @@
               <div>
                 <div class="contact-grid">
                   <div class="contact-box">
-                    <small>// Email</small>
-                    <strong>chandra@agentek.co.uk</strong>
+                    <small>// Phone</small>
+                    <strong><a href="tel:+447534524985">+44 7534 524985</a></strong>
                   </div>
                   <div class="contact-box">
                     <small>// Request a call</small>
@@ -782,7 +782,7 @@
                   </div>
                 </div>
                 <div class="contact-actions">
-                  <a href="mailto:chandra@agentek.co.uk" class="btn btn-outline">Email Agentek</a>
+                  <a href="tel:+447534524985" class="btn btn-outline">Call Agentek</a>
                   <a href="/book-a-strategy-call.html" class="btn btn-ghost">Open standalone form</a>
                 </div>
               </div>
@@ -825,7 +825,7 @@
         <p>We'll help you decide what should and shouldn't be built.</p>
         <div class="closing-actions">
           <a href="#strategy-call-form" class="btn btn-on-dark-primary">Request a call</a>
-          <a href="mailto:chandra@agentek.co.uk" class="btn btn-on-dark-outline">Or email us</a>
+          <a href="tel:+447534524985" class="btn btn-on-dark-outline">Or call us</a>
         </div>
       </div>
     </section>
@@ -850,10 +850,9 @@
       const strategyForm = document.getElementById('strategy-call-form');
       const strategyStatus = document.getElementById('strategy-status');
       const strategySubmit = document.getElementById('strategy-submit');
-      const fallbackEmail = 'chandra@agentek.co.uk';
+      const fallbackPhone = '+447534524985';
 
-      function openEmailFallback(payload) {
-        const subject = `Strategy Call Request - ${payload.name || 'Agentek website'}`;
+      function openPhoneFallback(payload) {
         const body = [
           'New strategy call request',
           '',
@@ -863,7 +862,7 @@
           `Company: ${payload.company || 'Not provided'}`,
         ].join('\n');
 
-        window.location.href = `mailto:${fallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `sms:${fallbackPhone}?body=${encodeURIComponent(body)}`;
       }
 
       strategyForm.addEventListener('submit', async (event) => {
@@ -886,8 +885,8 @@
 
           if (!response.ok) {
             if (result.error === 'Missing RESEND_API_KEY') {
-              openEmailFallback(payload);
-              strategyStatus.textContent = 'Your email app is opening with the request ready to send.';
+              openPhoneFallback(payload);
+              strategyStatus.textContent = 'Your messages app is opening with the request ready to send.';
               return;
             }
 
