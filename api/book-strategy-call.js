@@ -1,5 +1,5 @@
 const resendApiKey = process.env.RESEND_API_KEY;
-const bookingToEmail = process.env.BOOKING_TO_EMAIL || 'hello@agentek.co.uk';
+const bookingToEmail = process.env.BOOKING_TO_EMAIL || 'chandra@agentek.co.uk';
 const bookingFromEmail = process.env.BOOKING_FROM_EMAIL || 'Agentek <onboarding@resend.dev>';
 
 function escapeHtml(value = '') {
