@@ -339,23 +339,29 @@
         border-radius:16px;
         padding:48px;
         background:var(--bg);
-        max-width:960px;
+        max-width:1080px;
         margin:0 auto;
+      }
+      .contact-layout{
+        display:grid;
+        grid-template-columns:0.9fr 1.1fr;
+        gap:40px;
+        align-items:start;
+        margin-top:32px;
       }
       .contact-grid{
         display:grid;
-        grid-template-columns:repeat(3,1fr);
+        grid-template-columns:1fr;
         gap:0;
-        margin-top:36px;
         border:1px solid var(--line);
         border-radius:10px;
         overflow:hidden;
       }
       .contact-grid > *{
         padding:22px;
-        border-right:1px solid var(--line);
+        border-bottom:1px solid var(--line);
       }
-      .contact-grid > *:last-child{border-right:0}
+      .contact-grid > *:last-child{border-bottom:0}
       .contact-box small{
         display:block;
         font-family:var(--mono);
@@ -383,6 +389,43 @@
       }
       .contact-box .request-link:hover{border-color:var(--ink)}
       .contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+      .strategy-form{
+        display:grid;
+        gap:16px;
+      }
+      .form-row{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+      }
+      .form-field label{
+        display:block;
+        margin-bottom:8px;
+        font-size:0.875rem;
+        font-weight:500;
+        color:var(--ink);
+      }
+      .form-field input{
+        width:100%;
+        border:1px solid var(--line-md);
+        border-radius:8px;
+        padding:13px 14px;
+        font:inherit;
+        color:var(--ink);
+        background:var(--bg);
+      }
+      .form-field input:focus{
+        outline:2px solid rgba(234,88,12,0.16);
+        border-color:var(--accent);
+      }
+      .form-status{
+        min-height:22px;
+        font-size:0.875rem;
+        line-height:1.6;
+        color:var(--grey-1);
+      }
+      .form-status.is-error{color:#b42318}
+      .form-submit[disabled]{opacity:0.72;cursor:wait}
 
       /* CLOSING */
       .closing{
@@ -458,7 +501,7 @@
 
       /* RESPONSIVE */
       @media(max-width:1020px){
-        .two-col,.why-layout,.problem-grid{grid-template-columns:1fr;gap:32px}
+        .two-col,.why-layout,.problem-grid,.contact-layout{grid-template-columns:1fr;gap:32px}
         .grid-3{grid-template-columns:1fr;}
         .grid-3 > *{border-right:0;border-bottom:1px solid var(--line)}
         .grid-3 > *:last-child{border-bottom:0}
@@ -473,9 +516,7 @@
         .hero{padding:64px 0 72px}
         .wrap{width:calc(100% - 32px)}
         .contact-panel{padding:32px 24px}
-        .contact-grid{grid-template-columns:1fr}
-        .contact-grid > *{border-right:0;border-bottom:1px solid var(--line)}
-        .contact-grid > *:last-child{border-bottom:0}
+        .form-row{grid-template-columns:1fr}
       }
 
       /* FADE IN */
@@ -503,7 +544,7 @@
           <a href="#how-we-deliver">How We Deliver</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a href="/book-a-strategy-call.html" class="btn btn-dark">Book a call</a>
+        <a href="#strategy-call-form" class="btn btn-dark">Book a call</a>
       </div>
     </header>
 
@@ -521,7 +562,7 @@
             Agentek designs, governs, and deploys AI workflows across real systems, real controls, and real operational constraints — built for regulated enterprises.
           </p>
           <div class="hero-actions">
-            <a href="/book-a-strategy-call.html" class="btn btn-dark">Book a strategy call</a>
+            <a href="#strategy-call-form" class="btn btn-dark">Book a strategy call</a>
             <a href="#how-we-deliver" class="btn btn-outline btn-arrow">See how we deliver</a>
           </div>
           <div class="hero-meta">
@@ -723,24 +764,53 @@
             <span class="s-label">Contact</span>
             <h2 class="s-title">Start with the workflow, not the hype.</h2>
             <p class="s-body">If you are trying to move AI from idea to operation, Agentek can help shape the use case, define the control model, and design the path to production.</p>
-            <div class="contact-grid">
-              <div class="contact-box">
-                <small>// Email</small>
-                <strong>chandra@agentek.co.uk</strong>
+            <div class="contact-layout">
+              <div>
+                <div class="contact-grid">
+                  <div class="contact-box">
+                    <small>// Email</small>
+                    <strong>chandra@agentek.co.uk</strong>
+                  </div>
+                  <div class="contact-box">
+                    <small>// Request a call</small>
+                    <strong>30-minute intro call</strong>
+                    <a href="#strategy-call-form" class="request-link">Use the form →</a>
+                  </div>
+                  <div class="contact-box">
+                    <small>// Best for</small>
+                    <strong>Enterprise AI strategy, workflow design, and implementation planning</strong>
+                  </div>
+                </div>
+                <div class="contact-actions">
+                  <a href="mailto:chandra@agentek.co.uk" class="btn btn-outline">Email Agentek</a>
+                  <a href="/book-a-strategy-call.html" class="btn btn-ghost">Open standalone form</a>
+                </div>
               </div>
-              <div class="contact-box">
-                <small>// Request a call</small>
-                <strong>30-minute intro call</strong>
-                <a href="/book-a-strategy-call.html" class="request-link">Open request form →</a>
-              </div>
-              <div class="contact-box">
-                <small>// Best for</small>
-                <strong>Enterprise AI strategy, workflow design, and implementation planning</strong>
-              </div>
-            </div>
-            <div class="contact-actions">
-              <a href="mailto:chandra@agentek.co.uk" class="btn btn-dark">Email Agentek</a>
-              <a href="#home" class="btn btn-outline">Back to top</a>
+
+              <form class="strategy-form" id="strategy-call-form">
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="contact-name">Name</label>
+                    <input id="contact-name" name="name" type="text" autocomplete="name" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="contact-email">Email</label>
+                    <input id="contact-email" name="email" type="email" autocomplete="email" required />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="contact-phone">Phone number</label>
+                    <input id="contact-phone" name="phone" type="tel" autocomplete="tel" />
+                  </div>
+                  <div class="form-field">
+                    <label for="contact-company">Company</label>
+                    <input id="contact-company" name="company" type="text" autocomplete="organization" />
+                  </div>
+                </div>
+                <button class="btn btn-dark form-submit" id="strategy-submit" type="submit">Send request</button>
+                <div class="form-status" id="strategy-status" aria-live="polite"></div>
+              </form>
             </div>
           </div>
         </div>
@@ -754,7 +824,7 @@
         <h2>Talk to us before you scope your next AI project.</h2>
         <p>We'll help you decide what should and shouldn't be built.</p>
         <div class="closing-actions">
-          <a href="/book-a-strategy-call.html" class="btn btn-on-dark-primary">Request a call</a>
+          <a href="#strategy-call-form" class="btn btn-on-dark-primary">Request a call</a>
           <a href="mailto:chandra@agentek.co.uk" class="btn btn-on-dark-outline">Or email us</a>
         </div>
       </div>
@@ -774,6 +844,66 @@
       </div>
     </footer>
 
-    <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+    <script>
+      document.getElementById('yr').textContent=new Date().getFullYear();
+
+      const strategyForm = document.getElementById('strategy-call-form');
+      const strategyStatus = document.getElementById('strategy-status');
+      const strategySubmit = document.getElementById('strategy-submit');
+      const fallbackEmail = 'chandra@agentek.co.uk';
+
+      function openEmailFallback(payload) {
+        const subject = `Strategy Call Request - ${payload.name || 'Agentek website'}`;
+        const body = [
+          'New strategy call request',
+          '',
+          `Name: ${payload.name || ''}`,
+          `Email: ${payload.email || ''}`,
+          `Phone number: ${payload.phone || 'Not provided'}`,
+          `Company: ${payload.company || 'Not provided'}`,
+        ].join('\n');
+
+        window.location.href = `mailto:${fallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+
+      strategyForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const payload = Object.fromEntries(new FormData(strategyForm).entries());
+
+        strategySubmit.disabled = true;
+        strategySubmit.textContent = 'Sending...';
+        strategyStatus.textContent = 'Sending your request...';
+        strategyStatus.className = 'form-status';
+
+        try {
+          const response = await fetch('/api/book-strategy-call', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload),
+          });
+
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            if (result.error === 'Missing RESEND_API_KEY') {
+              openEmailFallback(payload);
+              strategyStatus.textContent = 'Your email app is opening with the request ready to send.';
+              return;
+            }
+
+            throw new Error(result.error || 'Unable to send your request right now.');
+          }
+
+          strategyForm.reset();
+          strategyStatus.textContent = 'Thanks. Your request has been sent.';
+        } catch (error) {
+          strategyStatus.textContent = error.message || 'Something went wrong. Please try again.';
+          strategyStatus.className = 'form-status is-error';
+        } finally {
+          strategySubmit.disabled = false;
+          strategySubmit.textContent = 'Send request';
+        }
+      });
+    </script>
   </body>
 </html>
