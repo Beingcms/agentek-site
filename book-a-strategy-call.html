@@ -374,6 +374,7 @@
       const thanksState = document.getElementById("thanks-state");
       const sendAnother = document.getElementById("send-another");
       const nameField = document.getElementById("name");
+      const fallbackEmail = "chandra@agentek.co.uk";
 
       function showForm() {
         formShell.hidden = false;
@@ -383,6 +384,20 @@
       function showThanks() {
         formShell.hidden = true;
         thanksState.hidden = false;
+      }
+
+      function openEmailFallback(payload) {
+        const subject = `Strategy Call Request - ${payload.name || "Agentek website"}`;
+        const body = [
+          "New strategy call request",
+          "",
+          `Name: ${payload.name || ""}`,
+          `Email: ${payload.email || ""}`,
+          `Phone number: ${payload.phone || "Not provided"}`,
+          `Company: ${payload.company || "Not provided"}`,
+        ].join("\n");
+
+        window.location.href = `mailto:${fallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       }
 
       sendAnother.addEventListener("click", () => {
@@ -415,6 +430,13 @@
           const result = await response.json().catch(() => ({}));
 
           if (!response.ok) {
+            if (result.error === "Missing RESEND_API_KEY") {
+              openEmailFallback(payload);
+              status.textContent = "Your email app is opening with the request ready to send.";
+              status.className = "status";
+              return;
+            }
+
             throw new Error(result.error || "Unable to send your request right now.");
           }
 
