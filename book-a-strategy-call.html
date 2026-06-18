@@ -347,8 +347,8 @@
               <div class="thanks-mark">✓</div>
               <h3>Thanks. Your request has been sent.</h3>
               <p>
-                Agentek has your details and will be in touch about a strategy call. If anything is urgent, email
-                <a href="mailto:chandra@agentek.co.uk">chandra@agentek.co.uk</a>.
+                Agentek has your details and will be in touch about a strategy call. If anything is urgent, call
+                <a href="tel:+447534524985">+44 7534 524985</a>.
               </p>
               <div class="thanks-actions">
                 <button class="secondary" id="send-another" type="button">Send another request</button>
@@ -357,7 +357,7 @@
           </div>
 
           <p class="note">
-            Contact email: <a href="mailto:chandra@agentek.co.uk">chandra@agentek.co.uk</a>
+            Phone: <a href="tel:+447534524985">+44 7534 524985</a>
           </p>
         </div>
       </section>
@@ -374,7 +374,7 @@
       const thanksState = document.getElementById("thanks-state");
       const sendAnother = document.getElementById("send-another");
       const nameField = document.getElementById("name");
-      const fallbackEmail = "chandra@agentek.co.uk";
+      const fallbackPhone = "+447534524985";
 
       function showForm() {
         formShell.hidden = false;
@@ -386,8 +386,7 @@
         thanksState.hidden = false;
       }
 
-      function openEmailFallback(payload) {
-        const subject = `Strategy Call Request - ${payload.name || "Agentek website"}`;
+      function openPhoneFallback(payload) {
         const body = [
           "New strategy call request",
           "",
@@ -397,7 +396,7 @@
           `Company: ${payload.company || "Not provided"}`,
         ].join("\n");
 
-        window.location.href = `mailto:${fallbackEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `sms:${fallbackPhone}?body=${encodeURIComponent(body)}`;
       }
 
       sendAnother.addEventListener("click", () => {
@@ -431,8 +430,8 @@
 
           if (!response.ok) {
             if (result.error === "Missing RESEND_API_KEY") {
-              openEmailFallback(payload);
-              status.textContent = "Your email app is opening with the request ready to send.";
+              openPhoneFallback(payload);
+              status.textContent = "Your messages app is opening with the request ready to send.";
               status.className = "status";
               return;
             }
