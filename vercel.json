@@ -5,6 +5,11 @@
       "source": "/book-a-strategy-call",
       "destination": "/book-a-strategy-call.html",
       "permanent": false
+    },
+    {
+      "source": "/company-ai-blueprint",
+      "destination": "/company-ai-blueprint.html",
+      "permanent": false
     }
   ]
 }
