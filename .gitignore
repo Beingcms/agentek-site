@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.vercel/
+.DS_Store
+# Generated from the existing embedded source by prepare-assets.mjs.
+/public/favicon-32.png
+/public/og-image.png
