@@ -6,7 +6,7 @@
   "scripts": {
     "predev": "node scripts/prepare-assets.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/prepare-assets.mjs",
+    "prebuild": "node scripts/prepare-build.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
