@@ -10,6 +10,11 @@
       "source": "/company-ai-blueprint",
       "destination": "/company-ai-blueprint.html",
       "permanent": false
+    },
+    {
+      "source": "/studio",
+      "destination": "/studio.html",
+      "permanent": false
     }
   ]
 }
