@@ -55,7 +55,7 @@ scenarioTabs.forEach((tab, index) => {
   });
 });
 
-// Preserve the existing endpoint and its four-field delivery contract.
+// Preserve the existing endpoint and optional legacy fields.
 // A failed submission retains entered details and offers a user-initiated fallback.
 document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
   const status = form.querySelector('[data-form-status]');
@@ -63,28 +63,38 @@ document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
   const defaultLabel = submit.textContent;
   submit.disabled = false;
   let sending = false;
+  let draftRequest = null;
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (sending || !form.reportValidity()) return;
     sending = true;
     const fields = new FormData(form);
-    const payload = Object.fromEntries(['name', 'email', 'phone', 'company'].map((key) => [key, String(fields.get(key) || '').trim()]));
+    const payload = Object.fromEntries(['name', 'email', 'phone', 'company', 'workflow', 'website_confirm'].map((key) => [key, String(fields.get(key) || '').trim()]));
+    payload.page = location.pathname;
+    const signature = JSON.stringify(payload);
+    let request = null;
+    const controls = [...form.elements].map(element => ({element, disabled:element.disabled}));
+    controls.forEach(({element}) => { element.disabled = true; });
     submit.disabled = true;
     submit.textContent = 'Sending your request…';
     form.setAttribute('aria-busy', 'true');
     status.className = 'form-status';
     status.textContent = 'Sending…';
     try {
+      if (!draftRequest || draftRequest.signature !== signature) draftRequest = {signature, id:crypto.randomUUID()};
+      request = draftRequest;
       const response = await fetch('/api/book-strategy-call', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Idempotency-Key': request.id },
+        signal: AbortSignal.timeout(16000),
         body: JSON.stringify(payload),
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok || result.ok !== true) throw new Error('delivery_failed');
       form.reset();
+      draftRequest = null;
       status.className = 'form-status is-success';
-      status.textContent = 'Thank you. Your request has been sent to AgenTek. We’ll be in touch to discuss the fit.';
+      status.textContent = 'Thank you. Our email service accepted your enquiry. AgenTek will reply to discuss the fit; this does not book a meeting or start paid work.';
     } catch {
       status.className = 'form-status is-error';
       status.textContent = 'We could not confirm delivery. Your details are still here. You can try again, email chandra@agentek.co.uk, or ';
@@ -92,16 +102,19 @@ document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
       const message = [
         `Hello AgenTek, I would like to discuss ${form.dataset.enquiryForm || 'a model pilot'}.`,
         `Name: ${payload.name}`, `Email: ${payload.email}`,
-        `Phone: ${payload.phone || 'Not provided'}`, `Company: ${payload.company || 'Not provided'}`,
+        `Phone: ${payload.phone || 'Not provided'}`, `Company: ${payload.company || 'Not provided'}`, `Work to discuss: ${payload.workflow || 'Not provided'}`, ...(request ? [`Reference: ${request.id}`] : []),
       ].join('\n');
       fallback.href = `sms:+447534524985?body=${encodeURIComponent(message)}`;
       fallback.textContent = 'open a text message draft';
       status.append(fallback, '. You choose whether to send it.');
     } finally {
       sending = false;
+      controls.forEach(({element, disabled}) => { element.disabled = disabled; });
       submit.disabled = false;
       submit.textContent = defaultLabel;
       form.removeAttribute('aria-busy');
     }
   });
 });
+
+document.querySelectorAll("[data-enquiry-topic]").forEach(link => link.addEventListener("click", () => { const input = document.querySelector("#contact-workflow"); if (input && !input.value.trim()) input.value = link.dataset.enquiryTopic; }));
