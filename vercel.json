@@ -16,5 +16,11 @@
       "destination": "/studio.html",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    }
   ]
 }
