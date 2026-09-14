@@ -15,6 +15,11 @@
       "source": "/studio",
       "destination": "/studio.html",
       "permanent": false
+    },
+    {
+      "source": "/protocol",
+      "destination": "/protocol.html",
+      "permanent": false
     }
   ],
   "rewrites": [
