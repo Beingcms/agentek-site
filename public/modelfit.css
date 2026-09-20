@@ -25,3 +25,11 @@
 /* Shared AgenTek identity and a smaller first step. */
 .brand-mark{background:transparent;border-radius:0}.brand-mark img{display:block;width:100%;height:100%;object-fit:contain}.fit-visual-simple{transform:none;padding:30px}.fit-journey{list-style:none;padding:8px 0 12px;margin:0}.fit-journey li{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #51465f}.fit-journey li:last-child{border-bottom:0}.fit-journey li>span{color:var(--lime);font-size:.75rem;font-weight:750;padding-top:5px}.fit-journey strong{font-size:1.45rem;letter-spacing:-.04em}.fit-journey p{font-size:.92rem;line-height:1.6;color:#d1c7e0;margin-top:6px}.fit-visual-simple .visual-bottom{gap:12px;flex-wrap:wrap}.fit-visual-simple .visual-bottom b{font-weight:600}.hero h1{font-size:clamp(3.4rem,6.7vw,6rem)}
 @media(max-width:540px){.fit-visual-simple{padding:22px}.fit-journey li{padding:20px 0;gap:16px}.fit-journey strong{font-size:1.25rem}.hero h1{font-size:clamp(3.2rem,11vw,4.7rem)}}
+
+.hosting-choice{margin-top:32px;padding:28px 0;border-top:1px solid var(--line)}
+.hosting-choice h3{font-size:1.55rem;line-height:1.25;margin:0 0 16px;letter-spacing:-.025em}
+.hosting-choice>p{max-width:920px;font-size:.95rem;line-height:1.75;color:var(--muted);margin:12px 0}
+.hosting-choice strong{color:var(--ink)}
+.hosting-choice .runtime-detail ul{max-width:920px;padding-left:22px;font-size:.9rem;line-height:1.75;color:var(--muted)}
+.hosting-choice .runtime-detail li{margin:12px 0}
+.hosting-choice .hosting-trademarks{font-size:.75rem;margin-top:16px}
