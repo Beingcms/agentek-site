@@ -1,0 +1,22 @@
+/* Brand v2 (Sep 2026): dark theme for the evidence pages, matching the homepage. */
+:root{--ink:#f4f1fa;--paper:#0d0a14;--white:#17121f;--muted:#a79fb8;--line:#2a2238;--soft-purple:#221a31;--purple:#b08cff;color-scheme:dark}
+html,body{background:#0d0a14;color:#f4f1fa}
+body{background-image:radial-gradient(900px 520px at 78% -8%,rgba(102,56,223,.3),transparent 70%);background-repeat:no-repeat}
+.site-header,.site-header.scrolled{background:rgba(13,10,20,.88)!important;border-color:#2a2238!important;backdrop-filter:blur(10px)}
+.brand-word,.brand-word small,.nav-links a{color:#f4f1fa}
+.nav-links a{color:#cfc6e0}
+.eyebrow,.text-purple{color:#d6fb68!important}
+h1 em,h2 em{color:#b08cff}
+.button-primary{background:#d6fb68!important;color:#211a31!important;border-color:#d6fb68!important}
+.button-dark,.header-cta{background:transparent!important;color:#f4f1fa!important;border:2px solid #f4f1fa!important}
+.button-light{background:#221a31!important;color:#f4f1fa!important}
+.pill,.pill-purple{background:#261e36!important;color:#d6fb68!important;border-color:#2a2238!important}
+.lab-case,.lab-method-card,.lab-test,.lab-new-input,.hosting-card,.step,.boundary-note,.lab-scores>div,.section-head+*,.studio-evidence,.lab-toolbar{background:#17121f!important;border-color:#2a2238!important;color:#f4f1fa}
+.lab-input,.lab-answer-grid pre,.lab-answer-grid>div,pre,code{background:#221a31!important;color:#e7e1f2!important;border-color:#2a2238!important}
+.lab-detail,.lab-ruling,.hero-lead,p{color:#cfc6e0}
+.sample-label,.case-top p,.lab-scores span{color:#a79fb8!important}
+.lab-scores strong{color:#f4f1fa}
+select,input{background:#17121f;color:#f4f1fa;border-color:#2a2238}
+.site-footer,.site-footer.on-dark{background:#0d0a14!important;border-top:1px solid #2a2238;color:#a79fb8}
+a{color:inherit}.lab-jumps a,.text-link{color:#d6fb68}
+.nav-toggle{color:#f4f1fa;background:transparent;border-color:#f4f1fa}

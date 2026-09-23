@@ -7,18 +7,38 @@
       "permanent": false
     },
     {
-      "source": "/company-ai-blueprint",
-      "destination": "/company-ai-blueprint.html",
+      "source": "/protocol",
+      "destination": "/protocol.html",
       "permanent": false
     },
     {
       "source": "/studio",
-      "destination": "/studio.html",
+      "destination": "/",
       "permanent": false
     },
     {
-      "source": "/protocol",
-      "destination": "/protocol.html",
+      "source": "/studio.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/demo",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/demo.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/company-ai-blueprint",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/company-ai-blueprint.html",
+      "destination": "/",
       "permanent": false
     }
   ],
@@ -26,10 +46,6 @@
     {
       "source": "/login",
       "destination": "/login.html"
-    },
-    {
-      "source": "/demo",
-      "destination": "/demo.html"
     }
   ]
 }

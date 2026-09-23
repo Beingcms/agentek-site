@@ -97,7 +97,7 @@ document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
       status.textContent = 'Thank you. Our email service accepted your enquiry. AgenTek will reply to discuss the fit; this does not book a meeting or start paid work.';
     } catch {
       status.className = 'form-status is-error';
-      status.textContent = 'We could not confirm delivery. Your details are still here. You can try again, email chandra@agentek.co.uk, or ';
+      status.textContent = 'We could not confirm delivery. Your details are still here. You can try again, or ';
       const fallback = document.createElement('a');
       const message = [
         `Hello AgenTek, I would like to discuss ${form.dataset.enquiryForm || 'a model pilot'}.`,
