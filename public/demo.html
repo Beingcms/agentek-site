@@ -403,6 +403,7 @@ $('#foot').textContent = `Model facts from Hugging Face, checked 23 September 20
 
 const start = (location.hash || '').slice(1);
 if (['find','data','result'].includes(start)) show(start);
+addEventListener('hashchange', () => { const h = location.hash.slice(1); if (['find','data','result'].includes(h)) show(h); });
 </script>
 </body>
 </html>
