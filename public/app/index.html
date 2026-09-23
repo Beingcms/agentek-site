@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgenTek ModelFit Studio</title>
+<meta name="description" content="Describe an AI task, find open models that fit, check your examples and plan a pilot. Private to your browser.">
+<link rel="icon" href="/favicon.svg">
+<style>
+:root{color-scheme:light;--ground:#f5f6f8;--ink:#111418;--muted:#5b616e;--line:#e3e6eb;--accent:#2446d8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--ground);color:var(--ink);font:16px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px 16px}
+main{max-width:460px;text-align:center}h1{font-size:22px;margin:0 0 8px}p{color:var(--muted);margin:0 0 12px}
+.spin{width:28px;height:28px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;margin:0 auto 18px;animation:s 0.9s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+a{color:var(--accent)}[hidden]{display:none}
+</style></head>
+<body><main>
+<div class="spin" id="spin" aria-hidden="true"></div>
+<h1 id="title">Opening your private Studio…</h1>
+<p id="detail">It runs in this browser. Nothing you add is sent to AgenTek.</p>
+<p id="help" hidden>Try a normal (not private) window in Chrome, Edge, Safari or Firefox, or allow site data for agentek.co.uk. You can still <a href="/demo">try the public demo</a>.</p>
+</main>
+<script>
+(function(){
+  function fail(msg){document.getElementById('spin').hidden=true;document.getElementById('title').textContent='This browser can’t open the Studio.';document.getElementById('detail').textContent=msg;document.getElementById('help').hidden=false;}
+  if(!('serviceWorker' in navigator)||!window.indexedDB){fail('It needs service workers and site storage, which are turned off here.');return;}
+  var reloaded=false;function go(){if(reloaded)return;reloaded=true;location.replace(location.href);}
+  navigator.serviceWorker.addEventListener('controllerchange',go);
+  navigator.serviceWorker.register('/app/sw.js',{scope:'/app/'}).then(function(){
+    return navigator.serviceWorker.ready;
+  }).then(function(){
+    if(navigator.serviceWorker.controller)go();
+    setTimeout(function(){if(!navigator.serviceWorker.controller)fail('The Studio did not start.');},15000);
+  }).catch(function(){fail('The Studio could not start its private storage.');});
+})();
+</script>
+</body></html>
