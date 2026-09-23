@@ -1,5 +1,182 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Open the Studio | AgenTek ModelFit</title><meta name="description" content="Sign in to the private ModelFit Studio with your authorised account, or ask AgenTek about access."><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://www.agentek.co.uk/login"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/modelfit.css"><link rel="stylesheet" href="/studio-intro.css"></head>
-<body class="login-page"><a class="skip" href="#main">Skip to sign in</a><header class="login-header wrap"><a class="brand" href="/" aria-label="AgenTek Labs home"><span class="brand-mark" aria-hidden="true"><img src="/brand-mark.svg" width="36" height="36" alt=""></span><span class="brand-word">AgenTek<small>LABS</small></span></a><a class="text-link" href="/studio">How it works</a></header>
-<main id="main" class="login-main wrap"><section class="login-card" aria-labelledby="login-title"><span class="pill pill-purple">ModelFit · Public preview</span><h1 id="login-title">Welcome<br><em>to ModelFit.</em></h1><p>Open ModelFit to prepare examples, compare answers and review your model’s progress.</p><a class="button button-primary login-action" href="/app/">Open ModelFit Studio <span aria-hidden="true">→</span></a><p class="login-host">No sign-in needed. The Studio runs in your browser and what you add stays on this device. Pilot customer? <a class="text-link" href="https://studio.agentek.co.uk/" rel="noreferrer">Open your private Studio ↗</a></p><div class="login-access"><h2>New to ModelFit?</h2><p>Start with the button above: describe your task, find models that fit and check your data. Training and comparing models on your own data happen in a pilot.</p><a class="text-link" href="mailto:chandra@agentek.co.uk?subject=ModelFit%20pilot">Ask about a pilot ↗</a></div><details class="login-help"><summary>Signing in to a private pilot Studio?</summary><p>Use your own account authorised for the private workspace. If you cannot get in, contact AgenTek. This page does not create an account or collect a password. Company single sign-on is agreed and qualified separately.</p></details></section><p class="login-note">No public signup. Please keep confidential data out of access enquiries.</p></main><footer class="login-footer wrap"><span>© 2026 Agentek Labs Limited.</span><a href="/">Back to AgenTek</a></footer></body></html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in | AgenTek ModelFit</title><meta name="description" content="Open the ModelFit Studio, or sign in to your private pilot Studio."><meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://www.agentek.co.uk/login"><meta name="theme-color" content="#0d0a14">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --ink:#211a31; --purple:#6638df; --purple-2:#b08cff; --lime:#d6fb68; --paper:#0d0a14;
+  --ground:#0d0a14; --text:#f4f1fa; --card:#17121f; --muted:#a79fb8; --line:#2a2238; --soft:#221a31; --chip:#261e36;
+  --good:#6fd39f; --warn:#f0b35a; --bad:#ff7b72; --accent:var(--purple-2);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+/* The brand is dark-first: the same palette in light and dark system settings. */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ground:#0d0a14}}
+:root[data-theme="dark"]{--ground:#0d0a14}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--text);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3,p{margin:0}
+h1,h2{letter-spacing:-.045em;line-height:1.04;text-wrap:balance}
+h1{font-size:clamp(2.5rem,5vw,4.1rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:780}
+h3{font-size:1.05rem;letter-spacing:-.01em;font-weight:700}
+a{color:inherit}
+.wrap{max-width:1160px;margin-inline:auto}
+.eyebrow{font:600 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:34em}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.85em 1.35em;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--text)}
+.btn-primary{background:var(--lime);color:#211a31;border-color:#211a31}
+.btn-ghost{background:transparent}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--lime);outline-offset:4px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:-.03em;font-size:1.15rem}
+.brand small{display:block;font:600 .55rem/1 var(--mono);letter-spacing:.2em;color:var(--muted)}
+nav.links{display:flex;gap:22px;font-weight:600;font-size:.95rem}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--text)}
+section{padding-block:clamp(56px,9vw,104px);border-top:1px solid var(--line)}
+section.hero{border-top:0;padding-block:clamp(24px,5vw,64px) clamp(48px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.hero-copy{display:grid;gap:22px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.fine{font:500 .8rem/1.5 var(--mono);color:var(--muted)}
+figure{margin:0}
+figcaption{font-size:.88rem;color:var(--muted);margin-top:12px;max-width:44em}
+svg{max-width:100%;height:auto;display:block}
+.svg-text{font-family:var(--sans);fill:currentColor}
+.svg-mono{font-family:var(--mono);fill:currentColor}
+.card-fill{fill:var(--card);stroke:var(--line)}
+.soft-fill{fill:var(--soft)}
+.chip-fill{fill:var(--chip)}
+.muted-text{fill:var(--muted)}
+.lime-fill{fill:var(--lime)}
+.ink-text{fill:#211a31}
+.purple-stroke{stroke:var(--purple)}
+.flow{stroke:var(--accent);stroke-width:2;fill:none;stroke-dasharray:6 8;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+@media (prefers-reduced-motion: reduce){.flow{animation:none}}
+.head{display:grid;gap:14px;margin-bottom:clamp(28px,5vw,48px);max-width:44em}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;gap:12px;align-content:start}
+.step p{color:var(--muted);font-size:.95rem}
+.step .n{font:600 .75rem/1 var(--mono);color:var(--muted)}
+.proof{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,56px);align-items:center}
+.report{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,28px);display:grid;gap:18px}
+.report-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:.45em;padding:.35em .8em;border-radius:999px;font:600 .75rem/1.2 var(--mono)}
+.pill-warn{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.scores{display:flex;gap:26px;align-items:baseline;flex-wrap:wrap}
+.score b{display:block;font-size:2.6rem;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.score span{font-size:.82rem;color:var(--muted)}
+.score.after b{color:var(--accent)}
+.bars{display:grid;gap:9px}
+.bar-row{display:grid;grid-template-columns:9.5em 1fr 3.4em;gap:12px;align-items:center;font-size:.9rem}
+.bar{height:10px;border-radius:10px;background:var(--chip);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:10px;background:var(--accent)}
+.bar-row.weak .bar i{background:var(--warn)}
+.bar-row .v{text-align:right;font:600 .85rem/1 var(--mono);font-variant-numeric:tabular-nums}
+.w100{width:100%}.w95{width:95%}.w92{width:92.5%}.w62{width:62.5%}.w55{width:55%}
+.proof-points{display:grid;gap:18px}
+.proof-points li{list-style:none;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.proof-points ul{padding:0;margin:0;display:grid;gap:16px}
+.tick{width:28px;height:28px;border-radius:50%;background:var(--lime);color:#211a31;display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.control{border:1px solid var(--line);border-radius:20px;padding:20px;display:grid;gap:10px;background:var(--card)}
+.control svg{width:40px;height:40px}
+.control p{color:var(--muted);font-size:.93rem}
+.band{background:#211a31;color:#f1edf8;border-radius:28px;padding:clamp(32px,6vw,72px) clamp(20px,5vw,56px);border:0}
+.on-dark{color:#f1edf8}
+.band .eyebrow{color:var(--lime)!important}
+.band p{color:#cfc6e0}
+.band a.src{color:#cfc6e0;font-size:.85rem}
+.band .btn{border-color:var(--lime)}
+.band-wrap{border-top:0;padding-top:0}
+footer{padding-block:36px 48px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+.preview-note{font:600 .72rem/1.4 var(--mono);background:var(--lime);color:#211a31;border-radius:10px;padding:8px 12px;margin-top:14px;text-align:center}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .controls{grid-template-columns:1fr 1fr}
+  nav.links{display:none}
+}
+@media (max-width:560px){
+  .steps,.controls{grid-template-columns:1fr}
+  .bar-row{grid-template-columns:7.6em 1fr 3em;gap:8px;font-size:.85rem}
+}
+
+.mt8{margin-top:8px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 18px 20px;display:grid;gap:14px;align-content:start}
+.tile h3{font-size:1.1rem}
+.tile .n{font:600 .75rem/1 var(--mono);color:var(--lime)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px;padding:0;list-style:none}
+.chips li{display:inline-flex;align-items:center;gap:8px;padding:.5em 1em;border:1px solid var(--line);border-radius:999px;background:var(--card);font:600 .8rem/1.2 var(--mono)}
+.chips li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 2px #211a31}
+.proof-one{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,56px);align-items:center}
+.band-cta{display:grid;gap:18px;justify-items:center;text-align:center}
+.band-cta p{max-width:30em}
+@media (max-width:900px){.tiles{grid-template-columns:1fr 1fr}.proof-one{grid-template-columns:1fr}}
+@media (max-width:560px){.tiles{gap:10px}.tile{padding:12px;gap:8px}.tile h3{font-size:.95rem}}
+
+body{background:var(--ground);background-image:radial-gradient(900px 520px at 78% -8%,rgba(102,56,223,.34),transparent 70%),radial-gradient(700px 420px at -10% 30%,rgba(214,251,104,.07),transparent 70%);background-repeat:no-repeat}
+.band{background:var(--lime);color:#211a31}
+.band .eyebrow{color:#4a3a78!important}
+.band p{color:#3a3050}
+.band a.src{color:#211a31}
+.band .btn-primary{background:#211a31;color:var(--lime);border-color:#211a31}
+.on-dark{color:#211a31}
+.shot{margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 30px 80px -30px rgba(102,56,223,.55)}
+.shot .chrome{display:flex;gap:6px;padding:10px 12px;background:#ece8f3}
+.shot .chrome i{width:10px;height:10px;border-radius:50%;background:#cfc7dc}
+.shot img{display:block;width:100%;height:auto}
+.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,56px);align-items:center}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.no-go{stroke:var(--bad)}
+.models{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 14px;margin-top:28px}
+.model-chip{display:inline-flex;align-items:baseline;gap:10px;padding:.6em 1.1em;border-radius:14px;background:var(--soft);border:1px solid var(--line)}
+.model-chip b{font-weight:700;font-size:.95rem}.model-chip small{font:600 .72rem/1 var(--mono);color:var(--lime)}
+
+.login{min-height:70vh;display:grid;place-items:center;padding-block:32px 64px}
+.login-card{width:min(520px,100%);background:var(--card);border:1px solid var(--line);border-radius:26px;padding:clamp(24px,5vw,40px);display:grid;gap:18px;box-shadow:0 30px 80px -40px rgba(102,56,223,.6)}
+.login-card h1{font-size:clamp(2rem,6vw,2.6rem)}
+.login-card .btn{justify-content:center}
+.option{display:grid;gap:8px;padding-top:18px;border-top:1px solid var(--line)}
+.option p{color:var(--muted);font-size:.93rem}
+</style>
+</head><body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="/" aria-label="AgenTek Labs home">
+    <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="17" fill="#211a31"/><path d="M15 47 30 17a2.2 2.2 0 0 1 4 0l15 30" fill="none" stroke="#d6fb68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 36h12" stroke="#aa83ff" stroke-width="6" stroke-linecap="round"/></svg>
+    <span>AgenTek<small>LABS</small></span>
+  </a>
+  <a class="btn btn-ghost" href="/">Back</a>
+</header>
+<main class="login" id="main">
+  <section class="login-card" aria-labelledby="login-title">
+    <span class="eyebrow">ModelFit Studio</span>
+    <h1 id="login-title">Sign in</h1>
+    <div class="option">
+      <h3>Pilot customer</h3>
+      <p>Sign in with your company account.</p>
+      <a class="btn btn-primary" href="https://studio.agentek.co.uk/" rel="noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="currentColor"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4"/></svg> Sign in to your Studio</a>
+    </div>
+    <div class="option">
+      <h3>Just looking</h3>
+      <p>Try the Studio with sample claims. It runs in your browser and nothing leaves this device.</p>
+      <a class="btn btn-ghost" href="/app/">Try the Studio</a>
+    </div>
+    <p class="fine">No account yet? <a href="mailto:chandra@agentek.co.uk?subject=ModelFit%20pilot">chandra@agentek.co.uk</a></p>
+  </section>
+</main>
+<footer>
+  <span>© 2026 Agentek Labs Limited. Company No. 17041966.</span>
+  <a href="/">agentek.co.uk</a>
+</footer>
+</div>
+</body></html>
