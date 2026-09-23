@@ -534,6 +534,8 @@ const state={access:{role:"viewer",capabilities:[]},workspace:null,examples:[],j
 const trialRoom=createTrialRoom({api,escape,notify,openDialog,getState:()=>state,goStep:n=>{state.step=n;renderStep();},pairRunner,allowed:c=>allowed(c)});
 const improvementRoom=createImprovementRoom({api,escape,notify,openDialog,getState:()=>state,goStep:n=>{state.step=n;renderStep();}});
 const allowed=capability=>state.access.capabilities.includes(capability);
+// Public browser edition: when a newer Studio has been published, pick it up straight away (unless the user is mid-edit).
+if(browserEdition()&&navigator.serviceWorker){let refreshed=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!refreshed&&!state.dirty&&!state.saving){refreshed=true;location.reload();}});navigator.serviceWorker.getRegistration('/app/').then(r=>r&&r.update()).catch(()=>{});}
 const runnerState=()=>allowed('operate')?api('/api/runners'):Promise.resolve({runners:[]});
 function renderRestrictedHome(){
  $('#home').hidden=true;
