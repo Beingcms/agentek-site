@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Talk to us | AgenTek ModelFit</title><meta name="description" content="Bring one business task. In 30 minutes we will tell you whether a small model you own can do it.">
+<title>Talk to us | AgenTek Labs</title><meta name="description" content="Bring one workflow. In 30 minutes we will talk through which mix of models could do it, and whether it is worth testing.">
 <link rel="canonical" href="https://www.agentek.co.uk/book-a-strategy-call.html"><meta name="theme-color" content="#0d0a14">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,16 +175,16 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
     <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="17" fill="#211a31"/><path d="M15 47 30 17a2.2 2.2 0 0 1 4 0l15 30" fill="none" stroke="#d6fb68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 36h12" stroke="#aa83ff" stroke-width="6" stroke-linecap="round"/></svg>
     <span>AgenTek<small>LABS</small></span>
   </a>
-  <a class="btn btn-ghost" href="/login">Studio</a>
+  <a class="btn btn-ghost" href="/login">Studio demo</a>
 </header>
 <main id="main" class="contact">
   <div>
     <span class="eyebrow">Talk to us</span>
-    <h1>Bring one task.</h1>
-    <p class="lead mt14">In 30 minutes we'll tell you whether a small model you own can do it.</p>
-    <ul class="points"><li>No cost to talk. Pilots are scoped first.</li><li>Runs in your cloud. Your data stays with you.</li><li>Leave customer records out of this form.</li></ul>
+    <h1>Bring one workflow.</h1>
+    <p class="lead mt14">In 30 minutes we'll talk through which mix of models could do it, and whether it is worth testing.</p>
+    <ul class="points"><li>No cost to talk. Every evaluation is scoped with you first.</li><li>Your data rules decide where each model runs.</li><li>Leave customer records out of this form.</li></ul>
   </div>
-  <form class="contact-form" method="post" action="/api/book-strategy-call" id="strategy-call-form" data-enquiry-form="a ModelFit pilot">
+  <form class="contact-form" method="post" action="/api/book-strategy-call" id="strategy-call-form" data-enquiry-form="a workflow evaluation">
     <noscript><p class="form-note">The form needs JavaScript. Please enable it, or call <a href="tel:+447534524985">+44 7534 524985</a>.</p></noscript>
     <div class="form-grid">
       <div class="field"><label for="contact-name">Your name</label><input id="contact-name" name="name" autocomplete="name" required maxlength="150"></div>
@@ -192,7 +192,7 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
       <div class="field"><label for="contact-company">Company <span>(optional)</span></label><input id="contact-company" name="company" autocomplete="organization" maxlength="200"></div>
       <div class="field"><label for="contact-phone">Phone <span>(optional)</span></label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="50"></div>
     </div>
-    <div class="field"><label for="contact-workflow">What should AI help with? <span>(optional)</span></label><textarea id="contact-workflow" name="workflow" rows="3" maxlength="1000" placeholder="For example: sort incoming claims and pull out the policy number."></textarea></div>
+    <div class="field"><label for="contact-workflow">What should AI help with? <span>(optional)</span></label><textarea id="contact-workflow" name="workflow" rows="3" maxlength="1000" placeholder="For example: triage incoming claims and draft replies, keeping customer data in our own cloud."></textarea></div>
     <div class="enquiry-check" aria-hidden="true"><label>Leave this blank<input name="website_confirm" tabindex="-1" autocomplete="off" maxlength="200"></label></div>
     <button class="btn btn-primary form-submit" type="submit" disabled>Request a conversation</button>
     <p class="form-note">An enquiry, not a purchase. We only use these details to reply.</p>
@@ -204,4 +204,8 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
   <a href="/">agentek.co.uk</a>
 </footer>
 </div>
+<script>
+// Prefill the topic when arriving from a "Book a workflow evaluation" link.
+(function(){try{var topic=new URLSearchParams(location.search).get("topic");var input=document.getElementById("contact-workflow");if(topic==="workflow-evaluation"&&input&&!input.value.trim()){input.value="Workflow evaluation: ";}}catch(e){}})();
+</script>
 </body></html>

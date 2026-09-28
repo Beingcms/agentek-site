@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AgenTek ModelFit | Your data in, your own AI model out</title><meta name="description" content="Fine-tune an open model on your past cases, inside your own cloud. Tested on cases it never saw, with a signed passport for every model.">
+<title>AgenTek Labs | AI workflows with the right mix of open and frontier models</title><meta name="description" content="We help UK and EU firms build and run AI workflows that use the right model for each step, open-weight or frontier, tested on your own cases.">
 <link rel="canonical" href="https://www.agentek.co.uk/">
-<meta property="og:title" content="AgenTek ModelFit | Your data in, your own AI model out"><meta property="og:description" content="Fine-tune an open model on your past cases, inside your own cloud. Tested on cases it never saw, with a signed passport for every model."><meta property="og:type" content="website"><meta property="og:url" content="https://www.agentek.co.uk/"><meta property="og:image" content="https://www.agentek.co.uk/og-image.png">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AgenTek ModelFit | Your data in, your own AI model out"><meta name="twitter:description" content="Fine-tune an open model on your past cases, inside your own cloud. Tested on cases it never saw, with a signed passport for every model."><meta name="twitter:image" content="https://www.agentek.co.uk/og-image.png">
+<meta property="og:title" content="AgenTek Labs | AI workflows with the right mix of open and frontier models"><meta property="og:description" content="We help UK and EU firms build and run AI workflows that use the right model for each step, open-weight or frontier, tested on your own cases."><meta property="og:type" content="website"><meta property="og:url" content="https://www.agentek.co.uk/"><meta property="og:image" content="https://www.agentek.co.uk/og-image.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AgenTek Labs | AI workflows with the right mix of open and frontier models"><meta name="twitter:description" content="We help UK and EU firms build and run AI workflows that use the right model for each step, open-weight or frontier, tested on your own cases."><meta name="twitter:image" content="https://www.agentek.co.uk/og-image.png">
 <meta name="theme-color" content="#0d0a14">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,6 +143,28 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
 .models{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 14px;margin-top:28px}
 .model-chip{display:inline-flex;align-items:baseline;gap:10px;padding:.6em 1.1em;border-radius:14px;background:var(--soft);border:1px solid var(--line)}
 .model-chip b{font-weight:700;font-size:.95rem}.model-chip small{font:600 .72rem/1 var(--mono);color:var(--lime)}
+
+/* 28 Sep 2026: workflow positioning */
+.nav-right{display:flex;align-items:center;gap:22px}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.role{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:12px;align-content:start}
+.role.us{border-color:var(--lime)}
+.role ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.role li{display:grid;grid-template-columns:14px 1fr;gap:10px;color:var(--muted);font-size:.95rem}
+.role li::before{content:"";width:8px;height:8px;margin-top:.55em;border-radius:50%;background:var(--lime)}
+.role .who{font:600 .72rem/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.strip{margin-top:22px;border:1px dashed var(--line);border-radius:16px;padding:14px 18px;color:var(--muted);text-align:center}
+.strip b{color:var(--text)}
+.tile p{color:var(--muted);font-size:.93rem}
+.tile .icon{width:44px;height:44px}
+.get{margin-top:22px;color:var(--muted);max-width:52em}
+.get b{color:var(--text)}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qa .control h3{font-size:1.05rem}
+.position{margin-top:26px;font-size:1.1rem;max-width:40em}
+.position b{color:var(--lime);font-weight:700}
+.demo-link{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;margin-top:6px}
+@media (max-width:900px){.roles{grid-template-columns:1fr}.qa{grid-template-columns:1fr}}
 </style>
 </head><body>
 <div class="wrap">
@@ -151,143 +173,191 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
     <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="17" fill="#211a31"/><path d="M15 47 30 17a2.2 2.2 0 0 1 4 0l15 30" fill="none" stroke="#d6fb68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 36h12" stroke="#aa83ff" stroke-width="6" stroke-linecap="round"/></svg>
     <span>AgenTek<small>LABS</small></span>
   </a>
-  <a class="btn btn-ghost" href="/login">Studio</a>
+  <div class="nav-right">
+    <nav class="links" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#control">Control</a>
+      <a href="/login">Studio demo</a>
+    </nav>
+    <a class="btn btn-ghost" href="/book-a-strategy-call.html?topic=workflow-evaluation">Talk to us</a>
+  </div>
 </header>
 
 <main id="top">
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">AgenTek ModelFit</span>
-      <h1 id="hero-title">Your data in.<br>Your own AI model out.</h1>
-      <p class="lead">Fine-tune an open model on your past cases, inside your own cloud.</p>
+      <span class="eyebrow">AgenTek Labs</span>
+      <h1 id="hero-title">AI workflows that use the right model for each job.</h1>
+      <p class="lead">We design, build and help you run AI workflows with the right mix of open-weight and frontier models, tested on your own cases and run where your data rules allow.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="/login">Open the Studio</a>
-        <a class="btn btn-ghost" href="/book-a-strategy-call">Book a call</a>
+        <a class="btn btn-primary" href="/book-a-strategy-call.html?topic=workflow-evaluation">Book a workflow evaluation</a>
+        <a class="btn btn-ghost" href="/login">Try the Studio demo</a>
       </div>
     </div>
     <figure>
-      <svg viewBox="0 0 560 420" role="img" aria-label="Customer messages flow into a small open model with your own adapter, which returns structured answers.">
+      <svg viewBox="0 0 560 420" role="img" aria-label="Illustration: an incoming task passes through your rules, which send customer data only to an open model in your cloud and send the frontier model by API no personal data.">
         <defs>
           <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6638df"/></marker>
         </defs>
-        <!-- incoming messages -->
         <g>
-          <rect x="8" y="40" width="170" height="74" rx="14" class="card-fill"/>
-          <text x="22" y="62" class="svg-mono muted-text" font-size="10">EMAIL</text>
-          <text x="22" y="82" class="svg-text" font-size="12">Charged twice for the</text>
-          <text x="22" y="99" class="svg-text" font-size="12">Pro plan, please refund…</text>
-          <rect x="8" y="172" width="170" height="74" rx="14" class="card-fill"/>
-          <text x="22" y="194" class="svg-mono muted-text" font-size="10">LIVE CHAT</text>
-          <text x="22" y="214" class="svg-text" font-size="12">Billing page says I owe</text>
-          <text x="22" y="231" class="svg-text" font-size="12">£49 again this month…</text>
-          <rect x="8" y="304" width="170" height="74" rx="14" class="card-fill"/>
-          <text x="22" y="326" class="svg-mono muted-text" font-size="10">WEB FORM</text>
-          <text x="22" y="346" class="svg-text" font-size="12">Refund the duplicate</text>
-          <text x="22" y="363" class="svg-text" font-size="12">charge on invoice 2231</text>
+          <rect x="6" y="150" width="150" height="120" rx="16" class="card-fill"/>
+          <text x="22" y="176" class="svg-mono muted-text" font-size="10">INCOMING TASK</text>
+          <text x="22" y="202" class="svg-text" font-size="12.5">Claim email with</text>
+          <text x="22" y="220" class="svg-text" font-size="12.5">policy details and</text>
+          <text x="22" y="238" class="svg-text" font-size="12.5">a reply to draft</text>
         </g>
-        <path class="flow" d="M178 77 C 215 77, 215 200, 244 200" marker-end="url(#ah)"/>
-        <path class="flow" d="M178 209 L 244 209" marker-end="url(#ah)"/>
-        <path class="flow" d="M178 341 C 215 341, 215 218, 244 218" marker-end="url(#ah)"/>
-        <!-- model -->
+        <path class="flow" d="M156 210 L 186 210" marker-end="url(#ah)"/>
         <g>
-          <rect x="250" y="140" width="130" height="140" rx="22" class="soft-fill"/>
-          <rect x="264" y="154" width="102" height="112" rx="16" fill="#211a31"/>
-          <rect x="250" y="140" width="130" height="140" rx="22" fill="none" stroke="#d6fb68" stroke-width="7"/>
-          <text x="315" y="202" text-anchor="middle" class="svg-text" font-size="12" font-weight="700" fill="#f1edf8" style="fill:#f1edf8">Open model</text>
-          <text x="315" y="220" text-anchor="middle" class="svg-mono" font-size="10" style="fill:#cfc6e0">unchanged</text>
-          <text x="315" y="304" text-anchor="middle" class="svg-mono" font-size="10.5">lime ring = your adapter</text>
-          <text x="315" y="320" text-anchor="middle" class="svg-mono muted-text" font-size="10">about 20 MB, owned by you</text>
+          <rect x="192" y="140" width="138" height="140" rx="20" class="soft-fill"/>
+          <rect x="192" y="140" width="138" height="140" rx="20" fill="none" stroke="#b08cff" stroke-width="2"/>
+          <text x="261" y="176" text-anchor="middle" class="svg-text" font-size="14" font-weight="800">Your rules</text>
+          <text x="261" y="202" text-anchor="middle" class="svg-mono muted-text" font-size="10">which data</text>
+          <text x="261" y="220" text-anchor="middle" class="svg-mono muted-text" font-size="10">which model</text>
+          <text x="261" y="238" text-anchor="middle" class="svg-mono muted-text" font-size="10">what it costs</text>
+          <text x="261" y="256" text-anchor="middle" class="svg-mono muted-text" font-size="10">when to switch</text>
         </g>
-        <path class="flow" d="M380 210 L 404 210" marker-end="url(#ah)"/>
-        <!-- structured answers -->
+        <path class="flow" d="M330 180 C 350 180, 350 96, 368 96" marker-end="url(#ah)"/>
+        <path class="flow" d="M330 240 C 350 240, 350 324, 368 324" marker-end="url(#ah)"/>
         <g>
-          <rect x="410" y="96" width="142" height="228" rx="16" class="card-fill"/>
-          <text x="424" y="120" class="svg-mono muted-text" font-size="10">ANSWERS</text>
-          <text x="424" y="146" class="svg-mono muted-text" font-size="9.5">category</text>
-          <text x="424" y="163" class="svg-text" font-size="12.5" font-weight="700">Billing</text>
-          <text x="424" y="190" class="svg-mono muted-text" font-size="9.5">priority</text>
-          <text x="424" y="207" class="svg-text" font-size="12.5" font-weight="700">High</text>
-          <text x="424" y="234" class="svg-mono muted-text" font-size="9.5">refund requested</text>
-          <text x="424" y="251" class="svg-text" font-size="12.5" font-weight="700">Yes</text>
-          <text x="424" y="278" class="svg-mono muted-text" font-size="9.5">product</text>
-          <text x="424" y="295" class="svg-text" font-size="12.5" font-weight="700">Billing portal</text>
+          <rect x="374" y="40" width="180" height="112" rx="20" fill="#211a31"/>
+          <rect x="374" y="40" width="180" height="112" rx="20" fill="none" stroke="#d6fb68" stroke-width="6"/>
+          <text x="464" y="80" text-anchor="middle" class="svg-text" font-size="14" font-weight="800" style="fill:#f1edf8">Open model</text>
+          <text x="464" y="100" text-anchor="middle" class="svg-mono" font-size="10" style="fill:#cfc6e0">in your cloud</text>
+          <text x="464" y="126" text-anchor="middle" class="svg-mono" font-size="10" style="fill:#d6fb68">gets the customer data</text>
         </g>
+        <g>
+          <rect x="374" y="268" width="180" height="112" rx="20" class="card-fill"/>
+          <text x="464" y="308" text-anchor="middle" class="svg-text" font-size="14" font-weight="800">Frontier model</text>
+          <text x="464" y="328" text-anchor="middle" class="svg-mono muted-text" font-size="10">by API</text>
+          <text x="464" y="354" text-anchor="middle" class="svg-mono" font-size="10" style="fill:#b08cff">no personal data sent</text>
+        </g>
+        <text x="280" y="412" text-anchor="middle" class="svg-mono muted-text" font-size="10">each route tested on your own cases before it goes live</text>
       </svg>
     </figure>
   </div>
 </section>
 
-<section aria-label="How it works">
+<section aria-labelledby="who-title">
+  <div class="head">
+    <span class="eyebrow">Who does what</span>
+    <h2 id="who-title">Models are the easy part. The workflow around them is the work.</h2>
+  </div>
+  <div class="roles">
+    <article class="role us">
+      <span class="who">AgenTek</span>
+      <h3>Designs, builds and tests the workflow</h3>
+      <ul>
+        <li>Designs the workflow with your team</li>
+        <li>Connects your data and the models</li>
+        <li>Sets who can send which data to which model, and when to switch models</li>
+        <li>Tests results on your own cases</li>
+        <li>Helps you run and monitor it</li>
+      </ul>
+    </article>
+    <article class="role">
+      <span class="who">Your inference provider or your own cloud</span>
+      <h3>Serves the models</h3>
+      <ul>
+        <li>GPUs, scaling and uptime</li>
+        <li>The model endpoints the workflow calls</li>
+        <li>You choose the provider and hold the account and the bill</li>
+      </ul>
+    </article>
+    <article class="role">
+      <span class="who">Your team</span>
+      <h3>Owns the outcome</h3>
+      <ul>
+        <li>The workflow and the data</li>
+        <li>What counts as a good answer, and which failures are unacceptable</li>
+        <li>The final decision to go live</li>
+      </ul>
+    </article>
+  </div>
+  <p class="strip"><b>Works with the inference provider you choose, a frontier API, or your own cloud.</b> You hold the accounts and the bills.</p>
+</section>
+
+<section id="how" aria-labelledby="how-title">
+  <div class="head">
+    <span class="eyebrow">Start with one workflow</span>
+    <h2 id="how-title">One workflow, tested properly, before anything is scaled.</h2>
+  </div>
   <div class="tiles">
     <article class="tile">
-      <svg viewBox="0 0 220 120" role="img" aria-label="A spreadsheet of past cases with the answer columns highlighted.">
-        <rect x="6" y="8" width="208" height="104" rx="12" class="card-fill"/>
-        <rect x="6" y="8" width="208" height="22" rx="12" class="chip-fill"/>
-        <text x="16" y="23" class="svg-mono muted-text" font-size="9">message</text>
-        <text x="128" y="23" class="svg-mono" font-size="9" style="fill:#6638df">category</text>
-        <text x="170" y="23" class="svg-mono" font-size="9" style="fill:#6638df">priority</text>
-        <rect x="120" y="30" width="94" height="82" class="lime-fill" opacity=".55"/>
-        <g stroke="var(--line)"><line x1="6" y1="52" x2="214" y2="52"/><line x1="6" y1="74" x2="214" y2="74"/><line x1="6" y1="96" x2="214" y2="96"/><line x1="120" y1="8" x2="120" y2="112"/></g>
-        <g class="muted-text"><rect x="16" y="38" width="86" height="6" rx="3" class="chip-fill"/><rect x="16" y="60" width="72" height="6" rx="3" class="chip-fill"/><rect x="16" y="82" width="92" height="6" rx="3" class="chip-fill"/></g>
-        <g class="ink-text" font-size="9" font-family="JetBrains Mono, monospace"><text x="128" y="45">billing</text><text x="170" y="45">high</text><text x="128" y="67">bug</text><text x="170" y="67">normal</text><text x="128" y="89">refund</text><text x="170" y="89">high</text></g>
-      </svg>
+      <svg class="icon" viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="4" width="32" height="36" rx="7" fill="none" stroke="#d6fb68" stroke-width="3"/><path d="M13 15h18M13 22h18M13 29h11" stroke="#b08cff" stroke-width="3" stroke-linecap="round"/></svg>
       <span class="n">1</span>
-      <h3>Upload past cases</h3>
+      <h3>Describe the job and the answer you need</h3>
+      <p>Agree what good looks like and which failures are unacceptable.</p>
     </article>
     <article class="tile">
-      <svg viewBox="0 0 220 120" role="img" aria-label="An unchanged open model with a thin adapter layer trained on your cases.">
-        <rect x="46" y="18" width="128" height="84" rx="18" fill="#211a31"/>
-        <rect x="46" y="18" width="128" height="84" rx="18" fill="none" stroke="#d6fb68" stroke-width="7"/>
-        <text x="110" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#f1edf8">Open model</text>
-        <text x="110" y="76" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#cfc6e0">+ your adapter</text>
-      </svg>
+      <svg class="icon" viewBox="0 0 44 44" aria-hidden="true"><path d="M8 36V22M22 36V10M36 36V16" stroke="#d6fb68" stroke-width="5" stroke-linecap="round"/><path d="M4 40h36" stroke="#b08cff" stroke-width="3" stroke-linecap="round"/></svg>
       <span class="n">2</span>
-      <h3>Train with one click</h3>
+      <h3>Compare the options</h3>
+      <p>Your current frontier model, an open model as it is, and a tuned model only where the numbers justify it.</p>
     </article>
     <article class="tile">
-      <svg viewBox="0 0 220 120" role="img" aria-label="Cases split into a large training share and a locked test set the model never sees.">
-        <rect x="10" y="44" width="160" height="32" rx="8" class="soft-fill"/>
-        <text x="90" y="64" text-anchor="middle" class="svg-mono" font-size="10">learns from</text>
-        <rect x="176" y="44" width="34" height="32" rx="8" fill="#211a31"/>
-        <path d="M187 58v-4a6 6 0 0 1 12 0v4" fill="none" stroke="#d6fb68" stroke-width="2.5"/>
-        <rect x="185" y="58" width="16" height="11" rx="2" fill="#d6fb68"/>
-        <text x="193" y="96" text-anchor="middle" class="svg-mono muted-text" font-size="9">test</text>
-        <text x="90" y="96" text-anchor="middle" class="svg-mono muted-text" font-size="9">about 85% of cases</text>
-      </svg>
+      <svg class="icon" viewBox="0 0 44 44" aria-hidden="true"><circle cx="11" cy="22" r="6" fill="none" stroke="#d6fb68" stroke-width="3"/><circle cx="33" cy="12" r="6" fill="none" stroke="#b08cff" stroke-width="3"/><circle cx="33" cy="32" r="6" fill="none" stroke="#b08cff" stroke-width="3"/><path d="M17 20l10-5M17 24l10 5" stroke="#f4f1fa" stroke-width="2.5"/></svg>
       <span class="n">3</span>
-      <h3>Tested on unseen cases</h3>
+      <h3>Build a limited integration</h3>
+      <p>Connect the real data sources and the chosen models for that one workflow.</p>
     </article>
     <article class="tile">
-      <svg viewBox="0 0 220 120" role="img" aria-label="The Studio and the trainer run inside your own cloud boundary.">
-        <rect x="8" y="10" width="204" height="100" rx="16" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 6"/>
-        <text x="20" y="30" class="svg-mono muted-text" font-size="9">YOUR CLOUD</text>
-        <rect x="24" y="44" width="78" height="48" rx="10" class="card-fill"/>
-        <text x="63" y="72" text-anchor="middle" class="svg-text" font-size="11" font-weight="700">Studio</text>
-        <rect x="118" y="44" width="78" height="48" rx="10" class="card-fill"/>
-        <text x="157" y="72" text-anchor="middle" class="svg-text" font-size="11" font-weight="700">Trainer</text>
-        <line x1="102" y1="68" x2="118" y2="68" stroke="#6638df" stroke-width="2"/>
-      </svg>
+      <svg class="icon" viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="4" width="32" height="36" rx="7" fill="none" stroke="#b08cff" stroke-width="3"/><path d="M14 23l6 6 11-12" fill="none" stroke="#d6fb68" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="n">4</span>
-      <h3>Runs in your cloud</h3>
+      <h3>Report and decide</h3>
+      <p>Quality, cost per 1,000 cases, speed and critical failures for each option, with a recommendation: scale it, change it or stop.</p>
     </article>
   </div>
-  <div class="models" aria-label="Open models it trains today">
-    <span class="eyebrow">Trains today</span>
-    <span class="model-chip"><b>Qwen2.5 0.5B Instruct</b><small>Apache 2.0</small></span>
-    <span class="model-chip"><b>SmolLM2 135M Instruct</b><small>Apache 2.0</small></span>
-    <span class="fine">Open models from Hugging Face, pinned to an exact version.</span>
+  <p class="get"><b>What you get:</b> a written report, the tested set of cases, the working limited integration, and a signed passport for any model we recommend. Scope is agreed with you up front.</p>
+</section>
+
+<section aria-labelledby="build-title">
+  <div class="head">
+    <span class="eyebrow">What we can build</span>
+    <h2 id="build-title">Fine-tuning is one tool. The workflow needs the rest.</h2>
   </div>
-  <ul class="chips" aria-label="Enterprise controls">
-    <li>Your SSO</li><li>4 roles</li><li>Signed jobs</li><li>Locked test set</li><li>Signed model passport</li><li>Non-root containers</li><li>Kubernetes or Docker</li>
+  <ul class="chips" aria-label="What we can build">
+    <li>Model comparison on your own cases</li><li>Retrieval and context design</li><li>Routing and fallback rules between models</li><li>Fine-tuning where it pays</li><li>Access and data rules</li><li>Monitoring, cost tracking and change checks</li><li>A signed passport for each model version</li>
   </ul>
 </section>
 
-<section aria-labelledby="see-title">
+<section id="control" aria-labelledby="control-title">
+  <div class="head">
+    <span class="eyebrow">Control, in plain words</span>
+    <h2 id="control-title">Four questions your risk team will ask. You will have the answers.</h2>
+  </div>
+  <div class="qa">
+    <article class="control">
+      <h3>Who can send which data to which model?</h3>
+      <p>Rules by role and by type of data. For example, customer records go only to models inside your cloud.</p>
+    </article>
+    <article class="control">
+      <h3>Where does each model run?</h3>
+      <p>In your cloud, with a UK or EU provider, or through a frontier API, chosen step by step.</p>
+    </article>
+    <article class="control">
+      <h3>What does it cost?</h3>
+      <p>Cost per 1,000 cases for each model, measured in testing and tracked once it runs.</p>
+    </article>
+    <article class="control">
+      <h3>How do you know when a model fails or changes?</h3>
+      <p>We re-run your locked test set whenever a model or its version changes, and each approved version carries a signed passport.</p>
+    </article>
+  </div>
+  <p class="position">Routing tools pick a model for each request. <b>We give you the tested rules and the evidence behind them, across the whole workflow.</b></p>
+  <p class="fine mt8">In a pilot: your own sign-in, four roles, an audit trail, signed jobs, a locked test set, and containers that run in your cloud.</p>
+</section>
+
+<section aria-labelledby="test-title">
   <div class="split">
     <div class="head">
-      <span class="eyebrow">Plain screens, no code</span>
-      <h2 id="see-title">Drop in a file. It shows what it will learn.</h2>
+      <span class="eyebrow">How we test: ModelFit</span>
+      <h2 id="test-title">Every option sits the same exam.</h2>
+      <p class="lead">ModelFit is the tool we use to test each option on cases it has never seen. The test set is locked before any model is tried, and each approved model gets a signed passport your risk team can check.</p>
+      <div class="demo-link">
+        <a class="btn btn-ghost" href="/login">Try the Studio demo</a>
+        <span class="fine">Runs in your browser with sample data. It shows the testing steps; it does not train models.</span>
+      </div>
     </div>
     <figure class="shot"><div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
       <img src="/studio-check.webp" loading="lazy" decoding="async" width="1100" height="606" alt="The ModelFit Studio after reading 400 sample support tickets: the answers it will learn, such as category, priority and whether a refund was requested.">
@@ -295,113 +365,19 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
   </div>
 </section>
 
-<section aria-labelledby="proof-title">
-  <div class="proof-one">
-    <div class="head" >
-      <span class="eyebrow">Proof, not promises</span>
-      <h2 id="proof-title">Every model gets an honest score.</h2>
-      <p class="fine">Real run, 23 Sep 2026. Qwen2.5 0.5B, 340 synthetic claims, 55 minutes on a CPU.</p>
-    </div>
-    <figure>
-      <div class="report" role="img" aria-label="A real ModelFit report: 13 of 40 test cases fully right after training, 0 before, verdict not ready yet.">
-        <div class="report-top">
-          <div>
-            <span class="eyebrow">Real run · 23 Sep 2026</span>
-            <h3 class="mt8">Example task: insurance claims triage</h3>
-          </div>
-          <span class="pill pill-warn">Not ready yet</span>
-        </div>
-        <div class="scores">
-          <div class="score"><b>0/40</b><span>before training</span></div>
-          <div class="score after"><b>13/40</b><span>after training, every answer right</span></div>
-        </div>
-        <div class="bars">
-          <div class="bar-row"><span>Claim type</span><span class="bar"><i class="w100"></i></span><span class="v">100%</span></div>
-          <div class="bar-row"><span>Policy number</span><span class="bar"><i class="w100"></i></span><span class="v">100%</span></div>
-          <div class="bar-row"><span>Fast track</span><span class="bar"><i class="w95"></i></span><span class="v">95%</span></div>
-          <div class="bar-row"><span>Vulnerable customer</span><span class="bar"><i class="w92"></i></span><span class="v">93%</span></div>
-          <div class="bar-row weak"><span>Incident date</span><span class="bar"><i class="w62"></i></span><span class="v">63%</span></div>
-          <div class="bar-row weak"><span>Severity</span><span class="bar"><i class="w55"></i></span><span class="v">55%</span></div>
-        </div>
-      </div>
-</figure>
-  </div>
-</section>
-
-<section aria-labelledby="deploy-title">
-  <div class="head">
-    <span class="eyebrow">Inside your boundary</span>
-    <h2 id="deploy-title">Your cloud. Your sign-in. Your data.</h2>
-  </div>
-  <figure>
-    <svg viewBox="0 0 1000 380" role="img" aria-label="Inside your cloud: your staff sign in through your own OIDC identity provider to the Studio, which stores data in your storage and sends signed training jobs to the trainer. The only outbound call is the trainer downloading the pinned open model from Hugging Face. No data goes to AgenTek.">
-      <defs>
-        <marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#b08cff"/></marker>
-      </defs>
-      <rect x="10" y="20" width="740" height="340" rx="28" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="8 8"/>
-      <text x="34" y="52" class="svg-mono muted-text" font-size="12">YOUR CLOUD OR DATA CENTRE</text>
-
-      <rect x="40" y="90" width="150" height="70" rx="16" class="card-fill"/>
-      <text x="115" y="121" text-anchor="middle" class="svg-text" font-size="15" font-weight="700">Your staff</text>
-      <text x="115" y="141" text-anchor="middle" class="svg-mono muted-text" font-size="11">browser</text>
-
-      <rect x="40" y="230" width="150" height="70" rx="16" class="card-fill"/>
-      <text x="115" y="261" text-anchor="middle" class="svg-text" font-size="15" font-weight="700">Your identity</text>
-      <text x="115" y="281" text-anchor="middle" class="svg-mono muted-text" font-size="11">standard OIDC sign-in</text>
-
-      <rect x="300" y="120" width="180" height="150" rx="20" class="soft-fill"/>
-      <text x="390" y="165" text-anchor="middle" class="svg-text" font-size="17" font-weight="800">Studio</text>
-      <text x="390" y="190" text-anchor="middle" class="svg-mono muted-text" font-size="11">screens · 4 roles</text>
-      <text x="390" y="208" text-anchor="middle" class="svg-mono muted-text" font-size="11">audit trail</text>
-      <text x="390" y="226" text-anchor="middle" class="svg-mono muted-text" font-size="11">container 1</text>
-
-      <rect x="570" y="120" width="150" height="150" rx="20" class="soft-fill"/>
-      <text x="645" y="165" text-anchor="middle" class="svg-text" font-size="17" font-weight="800">Trainer</text>
-      <text x="645" y="190" text-anchor="middle" class="svg-mono muted-text" font-size="11">CPU or GPU</text>
-      <text x="645" y="208" text-anchor="middle" class="svg-mono muted-text" font-size="11">container 2</text>
-
-      <rect x="330" y="300" width="120" height="44" rx="12" class="card-fill"/>
-      <text x="390" y="327" text-anchor="middle" class="svg-text" font-size="13" font-weight="700">Your storage</text>
-
-      <line x1="190" y1="125" x2="298" y2="165" stroke="#b08cff" stroke-width="2" marker-end="url(#ah2)"/>
-      <text x="206" y="118" class="svg-mono" font-size="11">uses</text>
-      <line x1="190" y1="262" x2="298" y2="230" stroke="#b08cff" stroke-width="2" marker-end="url(#ah2)"/>
-      <text x="204" y="282" class="svg-mono" font-size="11">signs in</text>
-      <line x1="480" y1="180" x2="568" y2="180" stroke="#b08cff" stroke-width="2" marker-end="url(#ah2)"/>
-      <text x="486" y="170" class="svg-mono" font-size="11">signed jobs</text>
-      <line x1="568" y1="220" x2="482" y2="220" stroke="#b08cff" stroke-width="2" marker-end="url(#ah2)"/>
-      <text x="492" y="240" class="svg-mono" font-size="11">your model</text>
-      <line x1="390" y1="270" x2="390" y2="298" stroke="#b08cff" stroke-width="2" marker-end="url(#ah2)"/>
-
-      <rect x="800" y="130" width="180" height="64" rx="16" class="card-fill"/>
-      <text x="890" y="159" text-anchor="middle" class="svg-text" font-size="14" font-weight="700">Hugging Face</text>
-      <text x="890" y="178" text-anchor="middle" class="svg-mono muted-text" font-size="10.5">pinned open model</text>
-      <line x1="798" y1="162" x2="722" y2="162" stroke="#b08cff" stroke-width="2" marker-end="url(#ah2)"/>
-      <text x="760" y="120" class="svg-mono" font-size="11">download only</text>
-
-      <rect x="800" y="250" width="180" height="64" rx="16" fill="none" stroke="currentColor" stroke-dasharray="4 4"/>
-      <text x="890" y="279" text-anchor="middle" class="svg-text" font-size="14" font-weight="700">AgenTek</text>
-      <text x="890" y="298" text-anchor="middle" class="svg-mono muted-text" font-size="10.5">receives nothing</text>
-      <line x1="722" y1="250" x2="798" y2="282" class="no-go" stroke-width="2" stroke-dasharray="5 5"/>
-      <line x1="752" y1="256" x2="768" y2="276" class="no-go" stroke-width="3"/>
-      <line x1="768" y1="256" x2="752" y2="276" class="no-go" stroke-width="3"/>
-    </svg>
-  </figure>
-</section>
-
 <section class="band-wrap" aria-labelledby="own-title">
   <div class="band band-cta">
-    <span class="eyebrow">Own the capability, not the model</span>
-    <h2 id="own-title" class="on-dark">Closed fine-tunes expire.<br>Yours won't.</h2>
-    <p>OpenAI ends new fine-tuning on 6 Jan 2027 (<a class="src" href="https://developers.openai.com/api/docs/deprecations">source</a>). An open model you own has no end date.</p>
-    <div class="actions"><a class="btn btn-primary" href="/login">Open the Studio</a></div>
+    <span class="eyebrow">Own the capability, not the vendor's roadmap</span>
+    <h2 id="own-title" class="on-dark">Closed fine-tunes expire.</h2>
+    <p>OpenAI stops new fine-tuning jobs on 6 Jan 2027 (<a class="src" href="https://developers.openai.com/api/docs/deprecations">source</a>). An open model you own stays available on your terms, though it still needs hosting, monitoring and updates. We plan for that from the first engagement.</p>
+    <div class="actions"><a class="btn btn-primary" href="/book-a-strategy-call.html?topic=workflow-evaluation">Book a workflow evaluation</a></div>
   </div>
 </section>
 </main>
 
 <footer>
   <span>© 2026 Agentek Labs Limited. Company No. 17041966.</span>
-  <a href="/book-a-strategy-call">Talk to us</a>
+  <a href="/book-a-strategy-call.html?topic=workflow-evaluation">Talk to us</a>
 </footer>
 </div>
 
