@@ -45,11 +45,18 @@ export function createBookingHandler({env = process.env, fetchImpl = fetch, time
     try {
       const response=await fetchImpl('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${env.RESEND_API_KEY}`,'Content-Type':'application/json','Idempotency-Key':'modelfit-enquiry/'+requestId},body:JSON.stringify(message),signal:AbortSignal.timeout(timeoutMs)});
       const result=await response.json().catch(()=>({}));
-      if (!response.ok || typeof result.id!=='string' || !UUID.test(result.id)) return res.status(502).json({error:'We could not confirm delivery. Your details have not been cleared; you can retry or email AgenTek.'});
+      if (!response.ok || typeof result.id!=='string' || !UUID.test(result.id)) {
+        // Provider status and error name/message hold no secrets or visitor data. They are logged for the owner and
+        // returned as a short code so a failure can be diagnosed from one browser request instead of a dashboard hunt.
+        const code=`provider_${response.status}${typeof result.name==='string'?'_'+result.name.replace(/[^a-z0-9_]/gi,'').slice(0,40):''}`;
+        console.error('enquiry delivery failed',JSON.stringify({status:response.status,name:result.name,message:typeof result.message==='string'?result.message.slice(0,300):undefined,from:message.from,to:message.to}));
+        return res.status(502).json({error:'We could not confirm delivery. Your details have not been cleared; you can retry or email AgenTek.',code});
+      }
       // Provider acceptance is not a claim of inbox delivery or a booked meeting.
       return res.status(200).json({ok:true,id:result.id,reference:requestId});
-    } catch {
-      return res.status(503).json({error:'We could not confirm delivery. Please retry the same request or email AgenTek.'});
+    } catch (error) {
+      console.error('enquiry delivery threw',error&&error.name);
+      return res.status(503).json({error:'We could not confirm delivery. Please retry the same request or email AgenTek.',code:'provider_unreachable'});
     }
   };
 }

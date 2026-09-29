@@ -49,3 +49,8 @@ test('browser cannot control recipients or inject an invalid idempotency key',as
  let payload;await send({body:{...input,to:'intruder@example.com'}},async(_,o)=>{payload=JSON.parse(o.body);return Response.json({id:ID})});assert.equal(payload.to,'owner@example.com');
  assert.equal((await send({headers:{'content-type':'application/json','idempotency-key':'invalid\nvalue'}})).statusCode,400);
 });
+test('provider failures return a short diagnostic code with no provider message or address',async()=>{
+ const r=await send({},async()=>Response.json({name:'validation_error',message:'You can only send testing emails to your own email address'},{status:403}));
+ assert.equal(r.statusCode,502);assert.equal(r.body.code,'provider_403_validation_error');assert.ok(!JSON.stringify(r.body).includes('testing emails'));assert.ok(!JSON.stringify(r.body).includes('owner@example.com'));
+ const thrown=await send({},async()=>{throw new Error('private error')});assert.equal(thrown.body.code,'provider_unreachable');
+});

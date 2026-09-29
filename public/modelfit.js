@@ -106,7 +106,10 @@ document.querySelectorAll('[data-enquiry-form]').forEach((form) => {
       ].join('\n');
       fallback.href = `sms:+447534524985?body=${encodeURIComponent(message)}`;
       fallback.textContent = 'open a text message draft';
-      status.append(fallback, '. You choose whether to send it.');
+      const mail = document.createElement('a');
+      mail.href = `mailto:chandra@agentek.co.uk?subject=${encodeURIComponent('AgenTek enquiry: ' + (form.dataset.enquiryForm || 'a model pilot'))}&body=${encodeURIComponent(message)}`;
+      mail.textContent = 'open an email draft';
+      status.append(fallback, ' or ', mail, '. You choose whether to send it.');
     } finally {
       sending = false;
       controls.forEach(({element, disabled}) => { element.disabled = disabled; });
