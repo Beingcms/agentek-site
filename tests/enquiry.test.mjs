@@ -54,3 +54,7 @@ test('provider failures return a short diagnostic code with no provider message 
  assert.equal(r.statusCode,502);assert.equal(r.body.code,'provider_403_validation_error');assert.ok(!JSON.stringify(r.body).includes('testing emails'));assert.ok(!JSON.stringify(r.body).includes('owner@example.com'));
  const thrown=await send({},async()=>{throw new Error('private error')});assert.equal(thrown.body.code,'provider_unreachable');
 });
+test('a UUIDv7 provider id, as Resend now issues, is accepted as a confirmed delivery',async()=>{
+ const r=await send({},async()=>Response.json({id:'01a0ebc8-6c81-72cc-8005-d0a2be832d43'}));
+ assert.equal(r.statusCode,200);assert.equal(r.body.ok,true);assert.equal(r.body.id,'01a0ebc8-6c81-72cc-8005-d0a2be832d43');
+});

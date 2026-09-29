@@ -1,7 +1,8 @@
 import {randomUUID} from 'node:crypto';
 
 const EMAIL = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
-const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i;
+// Any RFC 9562 version: Resend now issues UUIDv7 ids (e.g. 01a0ebc8-6c81-72cc-...), which the old [1-5] check rejected.
+const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i;
 const PAGES = new Set(['/', '/book-a-strategy-call', '/book-a-strategy-call.html', '/company-ai-blueprint', '/company-ai-blueprint.html', '/studio.html']);
 const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
