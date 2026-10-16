@@ -153,7 +153,7 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
 .contact-form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,32px);display:grid;gap:16px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .field{display:grid;gap:6px}
-.field label{font-weight:600;font-size:.92rem}.field label span{color:var(--muted);font-weight:400}
+.field label{font-weight:600;font-size:.92rem}.field label span{color:var(--muted);font-weight:400}.field label #enquiry-label{color:var(--text);font-weight:600}
 .field input,.field textarea{font:inherit;color:var(--text);background:#0d0a14;border:1px solid var(--line);border-radius:12px;padding:.75em .9em}
 .field input:focus,.field textarea:focus{outline:3px solid var(--lime);outline-offset:1px}
 .form-note{font-size:.82rem;color:var(--muted)}
@@ -175,13 +175,13 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
     <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="17" fill="#211a31"/><path d="M15 47 30 17a2.2 2.2 0 0 1 4 0l15 30" fill="none" stroke="#d6fb68" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 36h12" stroke="#aa83ff" stroke-width="6" stroke-linecap="round"/></svg>
     <span>AgenTek<small>LABS</small></span>
   </a>
-  <a class="btn btn-ghost" href="/login">Studio demo</a>
+  <a class="btn btn-ghost" href="/#partners">Partners</a>
 </header>
 <main id="main" class="contact">
   <div>
     <span class="eyebrow">Talk to us</span>
-    <h1>Bring one workflow.</h1>
-    <p class="lead mt14">In 30 minutes we'll talk through which mix of models could do it, and whether it is worth testing.</p>
+    <h1 id="enquiry-title">Bring one workflow.</h1>
+    <p id="enquiry-intro" class="lead mt14">In 30 minutes we'll talk through which mix of models could do it, and whether it is worth testing.</p>
     <ul class="points"><li>No cost to talk. Every evaluation is scoped with you first.</li><li>Your data rules decide where each model runs.</li><li>Leave customer records out of this form.</li></ul>
   </div>
   <form class="contact-form" method="post" action="/api/book-strategy-call" id="strategy-call-form" data-enquiry-form="a workflow evaluation">
@@ -192,7 +192,7 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
       <div class="field"><label for="contact-company">Company <span>(optional)</span></label><input id="contact-company" name="company" autocomplete="organization" maxlength="200"></div>
       <div class="field"><label for="contact-phone">Phone <span>(optional)</span></label><input id="contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="50"></div>
     </div>
-    <div class="field"><label for="contact-workflow">What should AI help with? <span>(optional)</span></label><textarea id="contact-workflow" name="workflow" rows="3" maxlength="1000" placeholder="For example: triage incoming claims and draft replies, keeping customer data in our own cloud."></textarea></div>
+    <div class="field"><label for="contact-workflow"><span id="enquiry-label">What should AI help with?</span> <span>(optional)</span></label><textarea id="contact-workflow" name="workflow" rows="3" maxlength="1000" placeholder="For example: triage incoming claims and draft replies, keeping customer data in our own cloud."></textarea></div>
     <div class="enquiry-check" aria-hidden="true"><label>Leave this blank<input name="website_confirm" tabindex="-1" autocomplete="off" maxlength="200"></label></div>
     <button class="btn btn-primary form-submit" type="submit" disabled>Request a conversation</button>
     <p class="form-note">An enquiry, not a purchase. We only use these details to reply.</p>
@@ -205,7 +205,22 @@ body{background:var(--ground);background-image:radial-gradient(900px 520px at 78
 </footer>
 </div>
 <script>
-// Prefill the topic when arriving from a "Book a workflow evaluation" link.
-(function(){try{var topic=new URLSearchParams(location.search).get("topic");var input=document.getElementById("contact-workflow");if(topic==="workflow-evaluation"&&input&&!input.value.trim()){input.value="Workflow evaluation: ";}}catch(e){}})();
+// Keep the enquiry route visible and include it in the existing message payload.
+(function(){
+  var topic=new URLSearchParams(location.search).get("topic");
+  var routes={
+    "workflow-evaluation":["Bring one workflow.","In 30 minutes we'll talk through the models, the cases to test and whether an evaluation is worth doing.","Workflow evaluation: ","What should AI help with?"],
+    "inference-hosting":["Find a home for your inference workload.","Tell us about the model, expected usage and UK or EU data requirements. We'll discuss suitable hosting routes and the checks needed.","Inference hosting: ","What are your inference requirements?"],
+    "partnership":["Let's discuss a partnership.","For inference and cloud providers: tell us where you operate, which workloads you support and how you would like to work together.","Partnership: ","What partnership would you like to explore?"]
+  };
+  var route=routes[topic]; if(!route)return;
+  document.getElementById("enquiry-title").textContent=route[0];
+  document.getElementById("enquiry-intro").textContent=route[1];
+  document.getElementById("enquiry-label").textContent=route[3];
+  var input=document.getElementById("contact-workflow");
+  if(!input.value.trim())input.value=route[2];
+  if(topic!=="workflow-evaluation")input.placeholder="Please leave out customer records and confidential information.";
+  document.getElementById("strategy-call-form").dataset.enquiryForm=topic==="partnership"?"a partnership":topic==="inference-hosting"?"inference hosting":"a workflow evaluation";
+})();
 </script>
 </body></html>
